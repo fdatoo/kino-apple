@@ -144,8 +144,10 @@ jobs:
           xcodebuild -version
           swift --version
 
+      # macOS uses ad-hoc signing ("Sign to Run Locally", CODE_SIGN_IDENTITY=-)
+      # configured in project.yml. No team or cert is needed in CI.
       - name: Build Kino-macOS
-        run: xcodebuild build -workspace Kino.xcworkspace -scheme Kino-macOS -destination 'platform=macOS' -quiet CODE_SIGNING_ALLOWED=NO
+        run: xcodebuild build -workspace Kino.xcworkspace -scheme Kino-macOS -destination 'platform=macOS' -quiet
 
   ios-uitest:
     name: ios-uitest
@@ -246,6 +248,8 @@ jobs:
           xcodebuild -version
           swift --version
 
-      # Unsigned macOS UI test runners are Gatekeeper-blocked on launch. Switch this to `test` once code signing lands.
-      - name: Build Kino-macOS UI tests
-        run: xcodebuild build-for-testing -workspace Kino.xcworkspace -scheme Kino-macOS -destination 'platform=macOS' -quiet CODE_SIGNING_ALLOWED=NO
+      # macOS uses ad-hoc signing ("Sign to Run Locally") wired in project.yml.
+      # That lets the UI test runner launch on CI without an Apple Developer
+      # identity, so we can run the real smoke test rather than build-for-testing.
+      - name: Test Kino-macOS
+        run: xcodebuild test -workspace Kino.xcworkspace -scheme Kino-macOS -destination 'platform=macOS' -quiet

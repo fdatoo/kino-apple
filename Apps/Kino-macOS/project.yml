@@ -8,8 +8,13 @@ options:
 settings:
   base:
     SWIFT_VERSION: "6.0"
-    CODE_SIGN_STYLE: Automatic
-    CODE_SIGNING_ALLOWED: NO
+    # Sign to Run Locally — ad-hoc signature so xcodebuild test can launch
+    # the UI test runner without an Apple Development cert. CI overrides this
+    # with CODE_SIGNING_ALLOWED=NO on the build jobs.
+    CODE_SIGN_STYLE: Manual
+    CODE_SIGN_IDENTITY: "-"
+    CODE_SIGNING_REQUIRED: YES
+    CODE_SIGNING_ALLOWED: YES
     GENERATE_INFOPLIST_FILE: YES
     CURRENT_PROJECT_VERSION: 1
     MARKETING_VERSION: 0.0.1
