@@ -39,4 +39,4 @@ monotonic, and the slug describes the decision in a few words.
 
 ## Index
 
-(empty - ADR-0001 will land with M0.7)
+- [ADR-0001 — swift-openapi-generator for API bindings](0001-swift-openapi-generator-for-api-bindings.md)
