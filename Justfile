@@ -25,15 +25,16 @@ build:
 		name="$1"; \
 		destination="$2"; \
 		project="Apps/$name/$name.xcodeproj"; \
+		extra="${3:-}"; \
 		if [ -d "$project" ]; then \
 			echo "build: $name"; \
-			xcodebuild build -project "$project" -scheme "$name" -destination "$destination" -quiet CODE_SIGNING_ALLOWED=NO; \
+			xcodebuild build -project "$project" -scheme "$name" -destination "$destination" -quiet $extra; \
 		else \
 			echo "build: skipping $name (no Xcode project yet)"; \
 		fi; \
 	}; \
-	build_app Kino-iOS "generic/platform=iOS Simulator"; \
-	build_app Kino-tvOS "generic/platform=tvOS Simulator"; \
+	build_app Kino-iOS "generic/platform=iOS Simulator" CODE_SIGNING_ALLOWED=NO; \
+	build_app Kino-tvOS "generic/platform=tvOS Simulator" CODE_SIGNING_ALLOWED=NO; \
 	build_app Kino-macOS "platform=macOS"
 
 test:
@@ -49,24 +50,20 @@ test:
 	test_app() { \
 		name="$1"; \
 		destination="$2"; \
+		extra="${3:-}"; \
 		project="Apps/$name/$name.xcodeproj"; \
 		if [ ! -d "$project" ]; then \
 			echo "test: skipping $name (no Xcode project yet)"; \
 		elif has_scheme "$project" "$name"; then \
 			echo "test: $name"; \
-			xcodebuild test -project "$project" -scheme "$name" -destination "$destination" -quiet CODE_SIGNING_ALLOWED=NO; \
+			xcodebuild test -project "$project" -scheme "$name" -destination "$destination" -quiet $extra; \
 		else \
 			echo "test: skipping $name (no test scheme yet)"; \
 		fi; \
 	}; \
-	test_app Kino-iOS "platform=iOS Simulator,name=iPhone 17,OS=latest"; \
-	test_app Kino-tvOS "platform=tvOS Simulator,name=Apple TV,OS=latest"; \
-	if [ -d Apps/Kino-macOS/Kino-macOS.xcodeproj ]; then \
-		echo "test: Kino-macOS (build-for-testing only — unsigned mac UI test runners are Gatekeeper-blocked on launch)"; \
-		xcodebuild build-for-testing -project Apps/Kino-macOS/Kino-macOS.xcodeproj -scheme Kino-macOS -destination "platform=macOS" -quiet CODE_SIGNING_ALLOWED=NO; \
-	else \
-		echo "test: skipping Kino-macOS (no Xcode project yet)"; \
-	fi
+	test_app Kino-iOS "platform=iOS Simulator,name=iPhone 17,OS=latest" CODE_SIGNING_ALLOWED=NO; \
+	test_app Kino-tvOS "platform=tvOS Simulator,name=Apple TV,OS=latest" CODE_SIGNING_ALLOWED=NO; \
+	test_app Kino-macOS "platform=macOS"
 
 fmt:
 	dirs=""; \
