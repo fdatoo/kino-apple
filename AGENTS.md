@@ -151,3 +151,14 @@ If a change is too big for a one-line message, the change is too big - split it.
 5. **Match the convention.** If you find yourself wanting to add a trailer or a
    commit body, re-read the [Commit messages](#commit-messages) section - it is
    not a default to override.
+
+## CI and branch protection
+
+GitHub Actions runs all of `kit-format`, `kit-test`, `ios-build`, `tvos-build`,
+`macos-build`, `ios-uitest`, `tvos-uitest`, and `macos-uitest` on every PR. The
+workflow lives in `.github/workflows/ci.yml`.
+
+`main` is branch-protected: every one of those jobs must pass before a PR can
+merge. The protection is configured in GitHub repository settings - not
+expressed in code - so any new required-check name added to the workflow must
+also be added to the protected-branch rule.

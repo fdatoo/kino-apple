@@ -1,0 +1,251 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  kit-format:
+    name: kit-format
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select latest Xcode
+        run: |
+          set -euo pipefail
+          ls /Applications | grep -E '^Xcode' || true
+          latest_xcode="$(find /Applications -maxdepth 1 -name 'Xcode_16*.app' -print | sort | tail -n 1)"
+          if [ -z "$latest_xcode" ]; then
+            latest_xcode="$(find /Applications -maxdepth 1 -name 'Xcode_15*.app' -print | sort | tail -n 1)"
+          fi
+          if [ -n "$latest_xcode" ]; then
+            sudo xcode-select -s "$latest_xcode" || echo "xcode-select failed; using current default"
+          else
+            echo "No Xcode_16 or Xcode_15 bundle found; using current default"
+          fi
+          xcodebuild -version
+          swift --version
+
+      - name: Check swift-format
+        run: swift format --version
+
+      - name: Check KinoKit formatting
+        run: swift format lint --strict --recursive Packages/KinoKit/Sources Packages/KinoKit/Tests
+
+  kit-test:
+    name: kit-test
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select latest Xcode
+        run: |
+          set -euo pipefail
+          ls /Applications | grep -E '^Xcode' || true
+          latest_xcode="$(find /Applications -maxdepth 1 -name 'Xcode_16*.app' -print | sort | tail -n 1)"
+          if [ -z "$latest_xcode" ]; then
+            latest_xcode="$(find /Applications -maxdepth 1 -name 'Xcode_15*.app' -print | sort | tail -n 1)"
+          fi
+          if [ -n "$latest_xcode" ]; then
+            sudo xcode-select -s "$latest_xcode" || echo "xcode-select failed; using current default"
+          else
+            echo "No Xcode_16 or Xcode_15 bundle found; using current default"
+          fi
+          xcodebuild -version
+          swift --version
+
+      - name: Test KinoKit
+        run: swift test --package-path Packages/KinoKit
+
+  ios-build:
+    name: ios-build
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select latest Xcode
+        run: |
+          set -euo pipefail
+          ls /Applications | grep -E '^Xcode' || true
+          latest_xcode="$(find /Applications -maxdepth 1 -name 'Xcode_16*.app' -print | sort | tail -n 1)"
+          if [ -z "$latest_xcode" ]; then
+            latest_xcode="$(find /Applications -maxdepth 1 -name 'Xcode_15*.app' -print | sort | tail -n 1)"
+          fi
+          if [ -n "$latest_xcode" ]; then
+            sudo xcode-select -s "$latest_xcode" || echo "xcode-select failed; using current default"
+          else
+            echo "No Xcode_16 or Xcode_15 bundle found; using current default"
+          fi
+          xcodebuild -version
+          swift --version
+
+      - name: Build Kino-iOS
+        run: xcodebuild build -workspace Kino.xcworkspace -scheme Kino-iOS -destination 'generic/platform=iOS Simulator' -quiet CODE_SIGNING_ALLOWED=NO
+
+  tvos-build:
+    name: tvos-build
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select latest Xcode
+        run: |
+          set -euo pipefail
+          ls /Applications | grep -E '^Xcode' || true
+          latest_xcode="$(find /Applications -maxdepth 1 -name 'Xcode_16*.app' -print | sort | tail -n 1)"
+          if [ -z "$latest_xcode" ]; then
+            latest_xcode="$(find /Applications -maxdepth 1 -name 'Xcode_15*.app' -print | sort | tail -n 1)"
+          fi
+          if [ -n "$latest_xcode" ]; then
+            sudo xcode-select -s "$latest_xcode" || echo "xcode-select failed; using current default"
+          else
+            echo "No Xcode_16 or Xcode_15 bundle found; using current default"
+          fi
+          xcodebuild -version
+          swift --version
+
+      - name: Build Kino-tvOS
+        run: xcodebuild build -workspace Kino.xcworkspace -scheme Kino-tvOS -destination 'generic/platform=tvOS Simulator' -quiet CODE_SIGNING_ALLOWED=NO
+
+  macos-build:
+    name: macos-build
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select latest Xcode
+        run: |
+          set -euo pipefail
+          ls /Applications | grep -E '^Xcode' || true
+          latest_xcode="$(find /Applications -maxdepth 1 -name 'Xcode_16*.app' -print | sort | tail -n 1)"
+          if [ -z "$latest_xcode" ]; then
+            latest_xcode="$(find /Applications -maxdepth 1 -name 'Xcode_15*.app' -print | sort | tail -n 1)"
+          fi
+          if [ -n "$latest_xcode" ]; then
+            sudo xcode-select -s "$latest_xcode" || echo "xcode-select failed; using current default"
+          else
+            echo "No Xcode_16 or Xcode_15 bundle found; using current default"
+          fi
+          xcodebuild -version
+          swift --version
+
+      - name: Build Kino-macOS
+        run: xcodebuild build -workspace Kino.xcworkspace -scheme Kino-macOS -destination 'platform=macOS' -quiet CODE_SIGNING_ALLOWED=NO
+
+  ios-uitest:
+    name: ios-uitest
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select latest Xcode
+        run: |
+          set -euo pipefail
+          ls /Applications | grep -E '^Xcode' || true
+          latest_xcode="$(find /Applications -maxdepth 1 -name 'Xcode_16*.app' -print | sort | tail -n 1)"
+          if [ -z "$latest_xcode" ]; then
+            latest_xcode="$(find /Applications -maxdepth 1 -name 'Xcode_15*.app' -print | sort | tail -n 1)"
+          fi
+          if [ -n "$latest_xcode" ]; then
+            sudo xcode-select -s "$latest_xcode" || echo "xcode-select failed; using current default"
+          else
+            echo "No Xcode_16 or Xcode_15 bundle found; using current default"
+          fi
+          xcodebuild -version
+          swift --version
+
+      - name: Test Kino-iOS
+        run: |
+          # Pick the first available iPhone simulator on the runner — the GitHub
+          # macos-14 image's available iPhone/iOS combinations drift between
+          # image versions, so resolving by udid avoids "name=X,OS=latest" misses.
+          sim_id="$(xcrun simctl list devices available --json | jq -r '
+            [.devices | to_entries[]
+             | select(.key | test("iOS"))
+             | .value[]
+             | select(.name | startswith("iPhone"))
+             | .udid] | first')"
+          echo "Using iOS simulator: $sim_id"
+          test -n "$sim_id"
+          xcodebuild test -workspace Kino.xcworkspace -scheme Kino-iOS -destination "id=$sim_id" -quiet CODE_SIGNING_ALLOWED=NO
+
+  tvos-uitest:
+    name: tvos-uitest
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select latest Xcode
+        run: |
+          set -euo pipefail
+          ls /Applications | grep -E '^Xcode' || true
+          latest_xcode="$(find /Applications -maxdepth 1 -name 'Xcode_16*.app' -print | sort | tail -n 1)"
+          if [ -z "$latest_xcode" ]; then
+            latest_xcode="$(find /Applications -maxdepth 1 -name 'Xcode_15*.app' -print | sort | tail -n 1)"
+          fi
+          if [ -n "$latest_xcode" ]; then
+            sudo xcode-select -s "$latest_xcode" || echo "xcode-select failed; using current default"
+          else
+            echo "No Xcode_16 or Xcode_15 bundle found; using current default"
+          fi
+          xcodebuild -version
+          swift --version
+
+      - name: Test Kino-tvOS
+        run: |
+          sim_id="$(xcrun simctl list devices available --json | jq -r '
+            [.devices | to_entries[]
+             | select(.key | test("tvOS"))
+             | .value[]
+             | select(.name | startswith("Apple TV"))
+             | .udid] | first')"
+          echo "Using tvOS simulator: $sim_id"
+          test -n "$sim_id"
+          xcodebuild test -workspace Kino.xcworkspace -scheme Kino-tvOS -destination "id=$sim_id" -quiet CODE_SIGNING_ALLOWED=NO
+
+  macos-uitest:
+    name: macos-uitest
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select latest Xcode
+        run: |
+          set -euo pipefail
+          ls /Applications | grep -E '^Xcode' || true
+          latest_xcode="$(find /Applications -maxdepth 1 -name 'Xcode_16*.app' -print | sort | tail -n 1)"
+          if [ -z "$latest_xcode" ]; then
+            latest_xcode="$(find /Applications -maxdepth 1 -name 'Xcode_15*.app' -print | sort | tail -n 1)"
+          fi
+          if [ -n "$latest_xcode" ]; then
+            sudo xcode-select -s "$latest_xcode" || echo "xcode-select failed; using current default"
+          else
+            echo "No Xcode_16 or Xcode_15 bundle found; using current default"
+          fi
+          xcodebuild -version
+          swift --version
+
+      # Unsigned macOS UI test runners are Gatekeeper-blocked on launch. Switch this to `test` once code signing lands.
+      - name: Build Kino-macOS UI tests
+        run: xcodebuild build-for-testing -workspace Kino.xcworkspace -scheme Kino-macOS -destination 'platform=macOS' -quiet CODE_SIGNING_ALLOWED=NO
