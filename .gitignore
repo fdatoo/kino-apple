@@ -4,8 +4,12 @@
 # Xcode
 build/
 DerivedData/
+*.xcscmblueprint
 *.xcuserstate
 xcuserdata/
+*.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+*.xcworkspace/xcshareddata/swiftpm/*
+!*.xcworkspace/xcshareddata/swiftpm/Package.resolved
 *.xcworkspace/xcuserdata/
 *.xcodeproj/xcuserdata/
 *.xcodeproj/project.xcworkspace/xcuserdata/
@@ -14,7 +18,7 @@ xcuserdata/
 # Swift Package Manager
 .build/
 .swiftpm/
-Packages/*/Package.resolved
+Packages/*/.build/
 
 # IDEs / editors
 .idea/
