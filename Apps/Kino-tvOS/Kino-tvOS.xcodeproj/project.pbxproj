@@ -1,0 +1,443 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3FB9CB86CCC751434C184B0B /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1503DE91F9F1CDDEE2B39A07 /* App.swift */; };
+		75ACE377BB47B7B5DA25D88E /* KinoKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9E50214497F2B011AA992F2B /* KinoKit */; };
+		B5BBC03D2DC87AE2C83A00EF /* LaunchSmokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27BE940411565E78FE081543 /* LaunchSmokeTests.swift */; };
+		F301E288871D6DE94F99863F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691DC5C4DEBE0B5832A9E493 /* ContentView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1F50581DA467DC9B03DFE734 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5A5F67FD40D768AD200C0C26 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FCF06EE6D25B6417AA1EBA25;
+			remoteInfo = "Kino-tvOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1503DE91F9F1CDDEE2B39A07 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		27BE940411565E78FE081543 /* LaunchSmokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchSmokeTests.swift; sourceTree = "<group>"; };
+		6762C1721BCDA0334D65BA63 /* Kino-tvOSUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = "Kino-tvOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		691DC5C4DEBE0B5832A9E493 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		74674F2D03F718C478F977C7 /* KinoKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = KinoKit; path = ../../Packages/KinoKit; sourceTree = SOURCE_ROOT; };
+		AE08C213DB928CE1BDA80EBA /* Kino-tvOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "Kino-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A2EDF9873DFAE6D3487FE202 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75ACE377BB47B7B5DA25D88E /* KinoKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C06A9DCFFD534CABBA43C5B5 /* UITests */ = {
+			isa = PBXGroup;
+			children = (
+				27BE940411565E78FE081543 /* LaunchSmokeTests.swift */,
+			);
+			path = UITests;
+			sourceTree = "<group>";
+		};
+		E59D512FD39B4C46F796EF95 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AE08C213DB928CE1BDA80EBA /* Kino-tvOS.app */,
+				6762C1721BCDA0334D65BA63 /* Kino-tvOSUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EB5F418B2489E825301F487D /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				74674F2D03F718C478F977C7 /* KinoKit */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		F4222245A6EF8F97BBCAF6DB /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				1503DE91F9F1CDDEE2B39A07 /* App.swift */,
+				691DC5C4DEBE0B5832A9E493 /* ContentView.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		FD6593BBF512A84B7F1E71EF = {
+			isa = PBXGroup;
+			children = (
+				EB5F418B2489E825301F487D /* Packages */,
+				F4222245A6EF8F97BBCAF6DB /* Sources */,
+				C06A9DCFFD534CABBA43C5B5 /* UITests */,
+				E59D512FD39B4C46F796EF95 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		2F30BAED2FEDDD5E394DB7AA /* Kino-tvOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 497398ABEFF2F46A8DBAC473 /* Build configuration list for PBXNativeTarget "Kino-tvOSUITests" */;
+			buildPhases = (
+				C156F8A425190CAED0665FC0 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F510C3B3A8B4E3AE4E4CEFB8 /* PBXTargetDependency */,
+			);
+			name = "Kino-tvOSUITests";
+			packageProductDependencies = (
+			);
+			productName = "Kino-tvOSUITests";
+			productReference = 6762C1721BCDA0334D65BA63 /* Kino-tvOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		FCF06EE6D25B6417AA1EBA25 /* Kino-tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AED4429D56161FEC20D66490 /* Build configuration list for PBXNativeTarget "Kino-tvOS" */;
+			buildPhases = (
+				58A4A8F3DAE27E528A93B307 /* Sources */,
+				A2EDF9873DFAE6D3487FE202 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Kino-tvOS";
+			packageProductDependencies = (
+				9E50214497F2B011AA992F2B /* KinoKit */,
+			);
+			productName = "Kino-tvOS";
+			productReference = AE08C213DB928CE1BDA80EBA /* Kino-tvOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5A5F67FD40D768AD200C0C26 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					2F30BAED2FEDDD5E394DB7AA = {
+						ProvisioningStyle = Automatic;
+						TestTargetID = FCF06EE6D25B6417AA1EBA25;
+					};
+					FCF06EE6D25B6417AA1EBA25 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 1172E7A87F10DBDAA7E66E6B /* Build configuration list for PBXProject "Kino-tvOS" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = FD6593BBF512A84B7F1E71EF;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				0BB1167F2C6F5DAD411221E1 /* XCLocalSwiftPackageReference "../../Packages/KinoKit" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = E59D512FD39B4C46F796EF95 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				FCF06EE6D25B6417AA1EBA25 /* Kino-tvOS */,
+				2F30BAED2FEDDD5E394DB7AA /* Kino-tvOSUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		58A4A8F3DAE27E528A93B307 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3FB9CB86CCC751434C184B0B /* App.swift in Sources */,
+				F301E288871D6DE94F99863F /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C156F8A425190CAED0665FC0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B5BBC03D2DC87AE2C83A00EF /* LaunchSmokeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F510C3B3A8B4E3AE4E4CEFB8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FCF06EE6D25B6417AA1EBA25 /* Kino-tvOS */;
+			targetProxy = 1F50581DA467DC9B03DFE734 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		036F87344EBE386AA8F9969C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fdatoo.kino.tvos;
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 17.0;
+			};
+			name = Debug;
+		};
+		1621CFD4FB200A65FD34070C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fdatoo.kino.tvos;
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 17.0;
+			};
+			name = Release;
+		};
+		4A8679B369C20DC9F2D7B3F1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 0.0.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+				TVOS_DEPLOYMENT_TARGET = 17.0;
+			};
+			name = Debug;
+		};
+		6FD2EC66D7DD2B7812073516 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fdatoo.kino.tvos.uitests;
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TEST_TARGET_NAME = "Kino-tvOS";
+				TVOS_DEPLOYMENT_TARGET = 17.0;
+			};
+			name = Release;
+		};
+		85C3DA4C84AB210FE46FC265 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.fdatoo.kino.tvos.uitests;
+				SDKROOT = appletvos;
+				TARGETED_DEVICE_FAMILY = 3;
+				TEST_TARGET_NAME = "Kino-tvOS";
+				TVOS_DEPLOYMENT_TARGET = 17.0;
+			};
+			name = Debug;
+		};
+		B384B50D09789713CCA968A0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 0.0.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+				TVOS_DEPLOYMENT_TARGET = 17.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1172E7A87F10DBDAA7E66E6B /* Build configuration list for PBXProject "Kino-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4A8679B369C20DC9F2D7B3F1 /* Debug */,
+				B384B50D09789713CCA968A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		497398ABEFF2F46A8DBAC473 /* Build configuration list for PBXNativeTarget "Kino-tvOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				85C3DA4C84AB210FE46FC265 /* Debug */,
+				6FD2EC66D7DD2B7812073516 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		AED4429D56161FEC20D66490 /* Build configuration list for PBXNativeTarget "Kino-tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				036F87344EBE386AA8F9969C /* Debug */,
+				1621CFD4FB200A65FD34070C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		0BB1167F2C6F5DAD411221E1 /* XCLocalSwiftPackageReference "../../Packages/KinoKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../Packages/KinoKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9E50214497F2B011AA992F2B /* KinoKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = KinoKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 5A5F67FD40D768AD200C0C26 /* Project object */;
+}

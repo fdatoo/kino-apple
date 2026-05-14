@@ -59,9 +59,14 @@ test:
 			echo "test: skipping $name (no test scheme yet)"; \
 		fi; \
 	}; \
-	test_app Kino-iOS "generic/platform=iOS Simulator"; \
-	test_app Kino-tvOS "generic/platform=tvOS Simulator"; \
-	test_app Kino-macOS "platform=macOS"
+	test_app Kino-iOS "platform=iOS Simulator,name=iPhone 17,OS=latest"; \
+	test_app Kino-tvOS "platform=tvOS Simulator,name=Apple TV,OS=latest"; \
+	if [ -d Apps/Kino-macOS/Kino-macOS.xcodeproj ]; then \
+		echo "test: Kino-macOS (build-for-testing only — unsigned mac UI test runners are Gatekeeper-blocked on launch)"; \
+		xcodebuild build-for-testing -project Apps/Kino-macOS/Kino-macOS.xcodeproj -scheme Kino-macOS -destination "platform=macOS" -quiet CODE_SIGNING_ALLOWED=NO; \
+	else \
+		echo "test: skipping Kino-macOS (no Xcode project yet)"; \
+	fi
 
 fmt:
 	dirs=""; \

@@ -1,0 +1,51 @@
+name: Kino-tvOS
+options:
+  bundleIdPrefix: com.fdatoo.kino
+  createIntermediateGroups: true
+  deploymentTarget:
+    tvOS: "17.0"
+  developmentLanguage: en
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    CODE_SIGN_STYLE: Automatic
+    CODE_SIGNING_ALLOWED: NO
+    GENERATE_INFOPLIST_FILE: YES
+    CURRENT_PROJECT_VERSION: 1
+    MARKETING_VERSION: 0.0.1
+packages:
+  KinoKit:
+    path: ../../Packages/KinoKit
+targets:
+  Kino-tvOS:
+    type: application
+    platform: tvOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: Sources
+    dependencies:
+      - package: KinoKit
+        product: KinoKit
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.fdatoo.kino.tvos
+  Kino-tvOSUITests:
+    type: bundle.ui-testing
+    platform: tvOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: UITests
+    dependencies:
+      - target: Kino-tvOS
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.fdatoo.kino.tvos.uitests
+schemes:
+  Kino-tvOS:
+    build:
+      targets:
+        Kino-tvOS: all
+        Kino-tvOSUITests: [test]
+    test:
+      targets:
+        - Kino-tvOSUITests
