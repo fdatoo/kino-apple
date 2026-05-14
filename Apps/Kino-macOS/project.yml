@@ -1,0 +1,53 @@
+name: Kino-macOS
+options:
+  bundleIdPrefix: com.fdatoo.kino
+  createIntermediateGroups: true
+  deploymentTarget:
+    macOS: "14.0"
+  developmentLanguage: en
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    CODE_SIGN_STYLE: Automatic
+    CODE_SIGNING_ALLOWED: NO
+    GENERATE_INFOPLIST_FILE: YES
+    CURRENT_PROJECT_VERSION: 1
+    MARKETING_VERSION: 0.0.1
+packages:
+  KinoKit:
+    path: ../../Packages/KinoKit
+targets:
+  Kino-macOS:
+    type: application
+    platform: macOS
+    deploymentTarget: "14.0"
+    sources:
+      - path: Sources
+    dependencies:
+      - package: KinoKit
+        product: KinoKit
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.fdatoo.kino.macos
+        INFOPLIST_KEY_NSPrincipalClass: NSApplication
+        INFOPLIST_KEY_LSApplicationCategoryType: public.app-category.entertainment
+  Kino-macOSUITests:
+    type: bundle.ui-testing
+    platform: macOS
+    deploymentTarget: "14.0"
+    sources:
+      - path: UITests
+    dependencies:
+      - target: Kino-macOS
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.fdatoo.kino.macos.uitests
+schemes:
+  Kino-macOS:
+    build:
+      targets:
+        Kino-macOS: all
+        Kino-macOSUITests: [test]
+    test:
+      targets:
+        - Kino-macOSUITests

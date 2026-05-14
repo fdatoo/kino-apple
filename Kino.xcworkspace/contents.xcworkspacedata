@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace version = "1.0">
+   <FileRef location = "group:Packages/KinoKit"></FileRef>
+   <FileRef location = "group:Apps/Kino-iOS/Kino-iOS.xcodeproj"></FileRef>
+   <FileRef location = "group:Apps/Kino-tvOS/Kino-tvOS.xcodeproj"></FileRef>
+   <FileRef location = "group:Apps/Kino-macOS/Kino-macOS.xcodeproj"></FileRef>
+</Workspace>

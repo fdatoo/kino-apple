@@ -1,0 +1,56 @@
+name: Kino-iOS
+options:
+  bundleIdPrefix: com.fdatoo.kino
+  createIntermediateGroups: true
+  deploymentTarget:
+    iOS: "17.0"
+  developmentLanguage: en
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    CODE_SIGN_STYLE: Automatic
+    CODE_SIGNING_ALLOWED: NO
+    GENERATE_INFOPLIST_FILE: YES
+    CURRENT_PROJECT_VERSION: 1
+    MARKETING_VERSION: 0.0.1
+    INFOPLIST_KEY_UILaunchScreen_Generation: YES
+packages:
+  KinoKit:
+    path: ../../Packages/KinoKit
+targets:
+  Kino-iOS:
+    type: application
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: Sources
+    dependencies:
+      - package: KinoKit
+        product: KinoKit
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.fdatoo.kino.ios
+        TARGETED_DEVICE_FAMILY: "1,2"
+        INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
+        INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
+        INFOPLIST_KEY_UILaunchScreen_Generation: YES
+  Kino-iOSUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    deploymentTarget: "17.0"
+    sources:
+      - path: UITests
+    dependencies:
+      - target: Kino-iOS
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.fdatoo.kino.ios.uitests
+schemes:
+  Kino-iOS:
+    build:
+      targets:
+        Kino-iOS: all
+        Kino-iOSUITests: [test]
+    test:
+      targets:
+        - Kino-iOSUITests

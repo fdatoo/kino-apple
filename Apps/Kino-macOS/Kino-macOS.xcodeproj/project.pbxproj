@@ -1,0 +1,445 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7ED748CB567BA658D7336A48 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21CFC112AB70541D84E5A876 /* App.swift */; };
+		BF703C2D650EBFF63FB30EFC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F2133F0E34E04CD769A713D /* ContentView.swift */; };
+		E6F96AC76ADBA31467047C6C /* LaunchSmokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566B223E1D70EA4A3EEF8F64 /* LaunchSmokeTests.swift */; };
+		F67EFF225ED7E75BAF75C3DD /* KinoKit in Frameworks */ = {isa = PBXBuildFile; productRef = 3B3AE773D293B4FA9E7E5F29 /* KinoKit */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7B7BCDE2ED7EC8C0EF57DE4F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9C58B43486026ABE7364BE4A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4BE6C8F082CF629778CC3491;
+			remoteInfo = "Kino-macOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0EB4F500C5C6EB13CDDC228D /* KinoKit */ = {isa = PBXFileReference; lastKnownFileType = folder; name = KinoKit; path = ../../Packages/KinoKit; sourceTree = SOURCE_ROOT; };
+		1F2133F0E34E04CD769A713D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		21CFC112AB70541D84E5A876 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		566B223E1D70EA4A3EEF8F64 /* LaunchSmokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchSmokeTests.swift; sourceTree = "<group>"; };
+		5BB13CC0E161E32F75F36B51 /* Kino-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Kino-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6A9577E74AC0174E4E3EB260 /* Kino-macOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Kino-macOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		65B98D68967FC2AB6B45387B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F67EFF225ED7E75BAF75C3DD /* KinoKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0024B524C6FD19857D28E724 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				21CFC112AB70541D84E5A876 /* App.swift */,
+				1F2133F0E34E04CD769A713D /* ContentView.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		45FB9D91FA310EA942C625B2 /* UITests */ = {
+			isa = PBXGroup;
+			children = (
+				566B223E1D70EA4A3EEF8F64 /* LaunchSmokeTests.swift */,
+			);
+			path = UITests;
+			sourceTree = "<group>";
+		};
+		5BF38C7066BF9CC4B4B5A4BC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5BB13CC0E161E32F75F36B51 /* Kino-macOS.app */,
+				6A9577E74AC0174E4E3EB260 /* Kino-macOSUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9662AC93EE38DE4C93937D72 = {
+			isa = PBXGroup;
+			children = (
+				C845E16011522364637BD562 /* Packages */,
+				0024B524C6FD19857D28E724 /* Sources */,
+				45FB9D91FA310EA942C625B2 /* UITests */,
+				5BF38C7066BF9CC4B4B5A4BC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C845E16011522364637BD562 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				0EB4F500C5C6EB13CDDC228D /* KinoKit */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		41CBA2CB05B51FDA92C6B11A /* Kino-macOSUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FA88CCDBB3EA673083F554BA /* Build configuration list for PBXNativeTarget "Kino-macOSUITests" */;
+			buildPhases = (
+				D410A4C394722589F5C24F2F /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				11F515AB84C292C64C61EF16 /* PBXTargetDependency */,
+			);
+			name = "Kino-macOSUITests";
+			packageProductDependencies = (
+			);
+			productName = "Kino-macOSUITests";
+			productReference = 6A9577E74AC0174E4E3EB260 /* Kino-macOSUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		4BE6C8F082CF629778CC3491 /* Kino-macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F29E4ADA10768A38D7AE665E /* Build configuration list for PBXNativeTarget "Kino-macOS" */;
+			buildPhases = (
+				4EA409775C8D1B9C338A9DB1 /* Sources */,
+				65B98D68967FC2AB6B45387B /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Kino-macOS";
+			packageProductDependencies = (
+				3B3AE773D293B4FA9E7E5F29 /* KinoKit */,
+			);
+			productName = "Kino-macOS";
+			productReference = 5BB13CC0E161E32F75F36B51 /* Kino-macOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9C58B43486026ABE7364BE4A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					41CBA2CB05B51FDA92C6B11A = {
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4BE6C8F082CF629778CC3491;
+					};
+					4BE6C8F082CF629778CC3491 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 600C81D2233533C1DA592CA1 /* Build configuration list for PBXProject "Kino-macOS" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 9662AC93EE38DE4C93937D72;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				C76D5E5C59FB17A1F20DB63C /* XCLocalSwiftPackageReference "../../Packages/KinoKit" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 5BF38C7066BF9CC4B4B5A4BC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4BE6C8F082CF629778CC3491 /* Kino-macOS */,
+				41CBA2CB05B51FDA92C6B11A /* Kino-macOSUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4EA409775C8D1B9C338A9DB1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7ED748CB567BA658D7336A48 /* App.swift in Sources */,
+				BF703C2D650EBFF63FB30EFC /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D410A4C394722589F5C24F2F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6F96AC76ADBA31467047C6C /* LaunchSmokeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		11F515AB84C292C64C61EF16 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4BE6C8F082CF629778CC3491 /* Kino-macOS */;
+			targetProxy = 7B7BCDE2ED7EC8C0EF57DE4F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		007A01FF9DD9E9B9C9922BB3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fdatoo.kino.macos;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		48BC932D32843FDEEB46B961 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.entertainment";
+				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fdatoo.kino.macos;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		52E4F57C6F8329A9D24A103B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fdatoo.kino.macos.uitests;
+				SDKROOT = macosx;
+				TEST_TARGET_NAME = "Kino-macOS";
+			};
+			name = Debug;
+		};
+		9F327F5C9F6811B241D2AAFB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 0.0.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		A5693F801162DD64A05FC6FA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.fdatoo.kino.macos.uitests;
+				SDKROOT = macosx;
+				TEST_TARGET_NAME = "Kino-macOS";
+			};
+			name = Release;
+		};
+		F2C9A31A319B995F3F9A552D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 0.0.1;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		600C81D2233533C1DA592CA1 /* Build configuration list for PBXProject "Kino-macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F2C9A31A319B995F3F9A552D /* Debug */,
+				9F327F5C9F6811B241D2AAFB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F29E4ADA10768A38D7AE665E /* Build configuration list for PBXNativeTarget "Kino-macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				007A01FF9DD9E9B9C9922BB3 /* Debug */,
+				48BC932D32843FDEEB46B961 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		FA88CCDBB3EA673083F554BA /* Build configuration list for PBXNativeTarget "Kino-macOSUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				52E4F57C6F8329A9D24A103B /* Debug */,
+				A5693F801162DD64A05FC6FA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		C76D5E5C59FB17A1F20DB63C /* XCLocalSwiftPackageReference "../../Packages/KinoKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../Packages/KinoKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3B3AE773D293B4FA9E7E5F29 /* KinoKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = KinoKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 9C58B43486026ABE7364BE4A /* Project object */;
+}
