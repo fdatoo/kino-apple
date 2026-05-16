@@ -28,7 +28,7 @@ build:
 		extra="${3:-}"; \
 		if [ -d "$project" ]; then \
 			echo "build: $name"; \
-			xcodebuild build -project "$project" -scheme "$name" -destination "$destination" -quiet $extra; \
+			xcodebuild build -project "$project" -scheme "$name" -destination "$destination" -skipPackagePluginValidation -quiet $extra; \
 		else \
 			echo "build: skipping $name (no Xcode project yet)"; \
 		fi; \
@@ -56,7 +56,7 @@ test:
 			echo "test: skipping $name (no Xcode project yet)"; \
 		elif has_scheme "$project" "$name"; then \
 			echo "test: $name"; \
-			xcodebuild test -project "$project" -scheme "$name" -destination "$destination" -quiet $extra; \
+			xcodebuild test -project "$project" -scheme "$name" -destination "$destination" -skipPackagePluginValidation -quiet $extra; \
 		else \
 			echo "test: skipping $name (no test scheme yet)"; \
 		fi; \
@@ -90,6 +90,17 @@ fmt-check:
 	else \
 		swift format lint --strict --recursive $dirs; \
 	fi
+
+# Refresh the vendored OpenAPI contract from kino at REF (tag, branch, or SHA).
+# Usage: `just openapi-sync` (kino main) or `just openapi-sync <ref>`. See ADR-0003.
+openapi-sync ref="main":
+	@echo "openapi-sync: kino@{{ref}}"; \
+	url="https://raw.githubusercontent.com/fdatoo/kino/{{ref}}/crates/kino-server/openapi.json"; \
+	dest="Packages/KinoKit/Sources/KinoKitGenerated/openapi.json"; \
+	tmp="$(mktemp)"; \
+	curl -fsSL "$url" -o "$tmp" || { echo "openapi-sync: fetch failed from $url" >&2; rm -f "$tmp"; exit 1; }; \
+	mv "$tmp" "$dest"; \
+	echo "openapi-sync: wrote $dest. Review the diff and commit if intentional."
 
 lint:
 	dirs=""; \

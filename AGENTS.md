@@ -15,14 +15,15 @@ rejected. This activates the mandatory Git hooks via `core.hooksPath`.
 A clean clone also needs Xcode with Swift 6.x, the Swift toolchain tools, and
 `just`. Standard commands:
 
-| Action       | Command          |
-|--------------|------------------|
-| Setup        | `just setup`     |
-| Build        | `just build`     |
-| Test         | `just test`      |
-| Format       | `just fmt`       |
-| Format check | `just fmt-check` |
-| Lint         | `just lint`      |
+| Action               | Command                   |
+|----------------------|---------------------------|
+| Setup                | `just setup`              |
+| Build                | `just build`              |
+| Test                 | `just test`               |
+| Format               | `just fmt`                |
+| Format check         | `just fmt-check`          |
+| Lint                 | `just lint`               |
+| Refresh OpenAPI spec | `just openapi-sync [ref]` |
 
 The `Justfile` lands in M0.2. Once present, run `just build`, `just test`,
 `just fmt-check`, and `just lint` before claiming work is done; they are what
