@@ -35,9 +35,10 @@ kino-apple/
 ```
 git clone git@github.com:fdatoo/kino-apple.git
 cd kino-apple
-just setup    # activates the git hooks and verifies Xcode + Swift 6.x
-just build    # builds KinoKit and all three apps
-just test     # runs KinoKit tests and UI smoke tests
+just setup                # activates the git hooks and verifies Xcode + Swift 6.x
+just build                # builds KinoKit and all three apps
+just test                 # runs KinoKit tests and UI smoke tests
+just openapi-sync         # refreshes the vendored kino openapi.json (see ADR-0003)
 ```
 
 Open `Kino.xcworkspace` in Xcode for IDE work.

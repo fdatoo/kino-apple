@@ -91,7 +91,7 @@ jobs:
           swift --version
 
       - name: Build Kino-iOS
-        run: xcodebuild build -workspace Kino.xcworkspace -scheme Kino-iOS -destination 'generic/platform=iOS Simulator' -quiet CODE_SIGNING_ALLOWED=NO
+        run: xcodebuild build -workspace Kino.xcworkspace -scheme Kino-iOS -destination 'generic/platform=iOS Simulator' -skipPackagePluginValidation -quiet CODE_SIGNING_ALLOWED=NO
 
   tvos-build:
     name: tvos-build
@@ -118,7 +118,7 @@ jobs:
           swift --version
 
       - name: Build Kino-tvOS
-        run: xcodebuild build -workspace Kino.xcworkspace -scheme Kino-tvOS -destination 'generic/platform=tvOS Simulator' -quiet CODE_SIGNING_ALLOWED=NO
+        run: xcodebuild build -workspace Kino.xcworkspace -scheme Kino-tvOS -destination 'generic/platform=tvOS Simulator' -skipPackagePluginValidation -quiet CODE_SIGNING_ALLOWED=NO
 
   macos-build:
     name: macos-build
@@ -147,7 +147,7 @@ jobs:
       # macOS uses ad-hoc signing ("Sign to Run Locally", CODE_SIGN_IDENTITY=-)
       # configured in project.yml. No team or cert is needed in CI.
       - name: Build Kino-macOS
-        run: xcodebuild build -workspace Kino.xcworkspace -scheme Kino-macOS -destination 'platform=macOS' -quiet
+        run: xcodebuild build -workspace Kino.xcworkspace -scheme Kino-macOS -destination 'platform=macOS' -skipPackagePluginValidation -quiet
 
   ios-uitest:
     name: ios-uitest
@@ -186,7 +186,7 @@ jobs:
              | .udid] | first')"
           echo "Using iOS simulator: $sim_id"
           test -n "$sim_id"
-          xcodebuild test -workspace Kino.xcworkspace -scheme Kino-iOS -destination "id=$sim_id" -quiet CODE_SIGNING_ALLOWED=NO
+          xcodebuild test -workspace Kino.xcworkspace -scheme Kino-iOS -destination "id=$sim_id" -skipPackagePluginValidation -quiet CODE_SIGNING_ALLOWED=NO
 
   tvos-uitest:
     name: tvos-uitest
@@ -222,7 +222,7 @@ jobs:
              | .udid] | first')"
           echo "Using tvOS simulator: $sim_id"
           test -n "$sim_id"
-          xcodebuild test -workspace Kino.xcworkspace -scheme Kino-tvOS -destination "id=$sim_id" -quiet CODE_SIGNING_ALLOWED=NO
+          xcodebuild test -workspace Kino.xcworkspace -scheme Kino-tvOS -destination "id=$sim_id" -skipPackagePluginValidation -quiet CODE_SIGNING_ALLOWED=NO
 
   macos-uitest:
     name: macos-uitest
@@ -252,4 +252,4 @@ jobs:
       # That lets the UI test runner launch on CI without an Apple Developer
       # identity, so we can run the real smoke test rather than build-for-testing.
       - name: Test Kino-macOS
-        run: xcodebuild test -workspace Kino.xcworkspace -scheme Kino-macOS -destination 'platform=macOS' -quiet
+        run: xcodebuild test -workspace Kino.xcworkspace -scheme Kino-macOS -destination 'platform=macOS' -skipPackagePluginValidation -quiet
