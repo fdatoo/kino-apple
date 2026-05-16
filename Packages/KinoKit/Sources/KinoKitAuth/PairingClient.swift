@@ -154,8 +154,12 @@ private struct LivePairingPoller: PairingPoller {
       throw error
     } catch is DecodingError {
       throw PairingError.malformedResponse
+    } catch let error as URLError {
+      throw KinoError.transport(error)
     } catch {
-      throw KinoError.transport(error as? URLError ?? URLError(.badServerResponse))
+      // Preserve the original error so failures are debuggable instead of
+      // being masked as URLError(.badServerResponse).
+      throw KinoError.decoding(error)
     }
   }
 
@@ -199,8 +203,12 @@ private struct LivePairingPoller: PairingPoller {
       throw error
     } catch is DecodingError {
       throw PairingError.malformedResponse
+    } catch let error as URLError {
+      throw KinoError.transport(error)
     } catch {
-      throw KinoError.transport(error as? URLError ?? URLError(.badServerResponse))
+      // Preserve the original error so failures are debuggable instead of
+      // being masked as URLError(.badServerResponse).
+      throw KinoError.decoding(error)
     }
   }
 }

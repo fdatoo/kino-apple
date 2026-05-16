@@ -1,4 +1,5 @@
 import Foundation
+import OpenAPIRuntime
 import OpenAPIURLSession
 
 @_exported import struct KinoKitGenerated.Client
@@ -41,10 +42,13 @@ public struct KinoTransport: Sendable {
     )
   }
 
-  /// Builds the generated OpenAPI client with URLSession transport and auth middleware.
+  /// Builds the generated OpenAPI client with URLSession transport, auth
+  /// middleware, and a date transcoder that tolerates both whole-seconds and
+  /// fractional-seconds ISO 8601 (kino emits microseconds).
   public func makeClient() -> Client {
     Client(
       serverURL: baseURL,
+      configuration: Configuration(dateTranscoder: TolerantISO8601DateTranscoder()),
       transport: URLSessionTransport(configuration: .init(session: urlSession)),
       middlewares: [AuthInterceptor(token: token)]
     )
