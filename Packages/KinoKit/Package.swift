@@ -49,6 +49,7 @@ let package = Package(
       name: "KinoKit",
       dependencies: [
         "KinoKitCore",
+        "KinoKitGenerated",
         "KinoKitTransport",
         "KinoKitAuth",
         "KinoKitPlayback",
