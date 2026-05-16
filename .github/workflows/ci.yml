@@ -66,6 +66,75 @@ jobs:
       - name: Test KinoKit
         run: swift test --package-path Packages/KinoKit
 
+  kit-coverage:
+    name: kit-coverage
+    runs-on: macos-14
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select latest Xcode
+        run: |
+          set -euo pipefail
+          ls /Applications | grep -E '^Xcode' || true
+          latest_xcode="$(find /Applications -maxdepth 1 -name 'Xcode_16*.app' -print | sort | tail -n 1)"
+          if [ -z "$latest_xcode" ]; then
+            latest_xcode="$(find /Applications -maxdepth 1 -name 'Xcode_15*.app' -print | sort | tail -n 1)"
+          fi
+          if [ -n "$latest_xcode" ]; then
+            sudo xcode-select -s "$latest_xcode" || echo "xcode-select failed; using current default"
+          else
+            echo "No Xcode_16 or Xcode_15 bundle found; using current default"
+          fi
+          xcodebuild -version
+          swift --version
+
+      - name: Test KinoKit with coverage
+        working-directory: Packages/KinoKit
+        run: swift test --enable-code-coverage
+
+      - name: Enforce coverage thresholds
+        working-directory: Packages/KinoKit
+        run: |
+          set -euo pipefail
+
+          BIN=".build/debug/KinoKitPackageTests.xctest/Contents/MacOS/KinoKitPackageTests"
+          PROF=".build/debug/codecov/default.profdata"
+
+          # Restrict the rollup to KinoKit's hand-written modules. The generated
+          # KinoKitGenerated target and third-party deps (swift-openapi-runtime,
+          # OpenAPIKit, ...) are excluded so the gate measures what we actually
+          # own. xcrun llvm-cov report columns on the TOTAL row:
+          # Regions | Missed | Region% | Functions | Missed | Function% |
+          # Lines | Missed | Line% | Branches | ...
+          xcrun llvm-cov report "$BIN" -instr-profile="$PROF" \
+            Sources/KinoKitCore \
+            Sources/KinoKitTransport \
+            Sources/KinoKitAuth \
+            Sources/KinoKitPlayback \
+            Sources/KinoKit > coverage.txt
+          cat coverage.txt
+
+          # Line coverage % = field 10 on the TOTAL row.
+          LINE_PCT="$(awk '$1 == "TOTAL" {print $10}' coverage.txt | tr -d '%')"
+          echo "KinoKit module line coverage: $LINE_PCT%"
+          # 50% gate — regression guard set to the floor of current reality
+          # (60.7% as of M2). Tightens in M3+ when apps drive the API and
+          # error-path tests become natural.
+          awk -v p="$LINE_PCT" 'BEGIN { if (p + 0 < 50) exit 1 }'
+
+          xcrun llvm-cov report "$BIN" -instr-profile="$PROF" \
+            Sources/KinoKitPlayback/VariantChooser.swift > variant-chooser-coverage.txt
+          cat variant-chooser-coverage.txt
+
+          # Region coverage % = field 4 on the VariantChooser row (Swift emits
+          # region counters, not branch counters; regions == "every execution
+          # path was hit").
+          REGION_PCT="$(awk '$1 ~ /VariantChooser.swift$/ {print $4}' variant-chooser-coverage.txt | tr -d '%')"
+          echo "VariantChooser region coverage: $REGION_PCT%"
+          awk -v p="$REGION_PCT" 'BEGIN { if (p + 0 < 100) exit 1 }'
+
   ios-build:
     name: ios-build
     runs-on: macos-14

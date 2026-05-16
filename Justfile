@@ -102,6 +102,11 @@ openapi-sync ref="main":
 	mv "$tmp" "$dest"; \
 	echo "openapi-sync: wrote $dest. Review the diff and commit if intentional."
 
+# Run the KinoKit probe against a real local kino-server.
+# Override defaults via env: KINO_PROBE_BASE_URL, KINO_PROBE_ITEM_ID, etc.
+probe:
+	swift run --package-path Packages/KinoKit KinoKitProbe
+
 lint:
 	dirs=""; \
 	for dir in Packages Apps; do \
