@@ -55,6 +55,11 @@ let package = Package(
         "KinoKitPlayback",
       ]
     ),
+    .executableTarget(
+      name: "KinoKitProbe",
+      dependencies: ["KinoKit"],
+      path: "Probe/KinoKitProbe"
+    ),
     .testTarget(
       name: "KinoKitTests",
       dependencies: ["KinoKit"]
