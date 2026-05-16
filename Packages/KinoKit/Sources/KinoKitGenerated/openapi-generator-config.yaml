@@ -2,4 +2,4 @@ generate:
     - types
     - client
 namingStrategy: idiomatic
-accessModifier: internal
+accessModifier: public
