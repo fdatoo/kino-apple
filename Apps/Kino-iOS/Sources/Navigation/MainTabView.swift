@@ -23,7 +23,7 @@ struct MainTabView: View {
       ShowsView()
         .tabItem { Label("Shows", systemImage: "tv") }
         .tag(Tab.shows)
-      TabPlaceholder(title: "Search")
+      SearchView()
         .tabItem { Label("Search", systemImage: "magnifyingglass") }
         .tag(Tab.search)
     }
