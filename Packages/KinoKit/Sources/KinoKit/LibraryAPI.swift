@@ -14,11 +14,13 @@ public struct LibraryAPI: Sendable {
   ///
   /// - Parameters:
   ///   - kind: Server-side media kind filter (e.g. `"movie"`, `"tv_episode"`). Pass `nil` to return all kinds.
+  ///   - sort: Stable sort order: `"recently_added"`, `"title"`, or `"year"`. Pass `nil` for default server ordering.
   ///   - limit: Maximum number of items to return.
   ///   - offset: Number of matching items to skip for pagination.
   ///   - q: Full-text search query across title and related fields.
   public func list(
     kind: String? = nil,
+    sort: String? = nil,
     limit: Int? = nil,
     offset: Int? = nil,
     q: String? = nil
@@ -26,6 +28,7 @@ public struct LibraryAPI: Sendable {
     let output = try await transport.makeClient().listCatalogItems(
       query: .init(
         kind: kind,
+        sort: sort,
         q: q,
         limit: limit.map(Int32.init),
         offset: offset.map(Int64.init)

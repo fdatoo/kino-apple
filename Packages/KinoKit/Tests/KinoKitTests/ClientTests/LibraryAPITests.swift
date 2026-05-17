@@ -54,6 +54,26 @@ final class LibraryAPITests: XCTestCase {
     XCTAssertEqual(items.count, 1)
   }
 
+  func test_listWithSortFiltersToSort() async throws {
+    nonisolated(unsafe) var observed: URLRequest?
+    StubURLProtocol.push(
+      when: { request in
+        observed = request
+        return request.url?.path == "/api/v1/library/items"
+      },
+      .init(status: 200, headers: ["Content-Type": "application/json"], body: catalogListJSON)
+    )
+
+    let items = try await testClient().library.list(sort: "recently_added", limit: 1)
+
+    let request = try XCTUnwrap(observed)
+    XCTAssertEqual(request.httpMethod, "GET")
+    assertAuthorized(request)
+    XCTAssertEqual(queryValue("sort", in: request), "recently_added")
+    XCTAssertEqual(queryValue("limit", in: request), "1")
+    XCTAssertEqual(items.count, 1)
+  }
+
   func test_getMapsToGetCatalogItem() async throws {
     let id = UUID(uuidString: "00000000-0000-0000-0000-000000000101")!
     nonisolated(unsafe) var observed: URLRequest?

@@ -1,6 +1,12 @@
 import Foundation
 import KinoKitGenerated
 
+/// An in-progress playback item returned by the server.
+public typealias InProgressItem = Components.Schemas.InProgressItem
+
+/// A library item summary embedded in playback and catalog responses.
+public typealias LibraryItemSummary = Components.Schemas.LibraryItemSummary
+
 /// Playback progress API wrapper.
 public struct PlaybackAPI: PlaybackReporting, Sendable {
   private let transport: KinoTransport
@@ -8,6 +14,24 @@ public struct PlaybackAPI: PlaybackReporting, Sendable {
   /// Creates a playback API bound to a transport.
   public init(transport: KinoTransport) {
     self.transport = transport
+  }
+
+  /// Lists in-progress items for the current user, most recently updated first.
+  public func listInProgress(limit: Int? = nil) async throws -> [InProgressItem] {
+    let output = try await transport.makeClient().listProgress(
+      query: .init(limit: limit.map(Int32.init))
+    )
+
+    switch output {
+    case .ok(let response):
+      return try response.body.json.items
+    case .unauthorized:
+      throw ErrorMapper.map(httpStatus: 401, body: nil)
+    case .internalServerError:
+      throw ErrorMapper.map(httpStatus: 500, body: nil)
+    case .undocumented(let statusCode, _):
+      throw ErrorMapper.map(httpStatus: statusCode, body: nil)
+    }
   }
 
   /// Reports playback progress for an item.
