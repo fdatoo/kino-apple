@@ -61,12 +61,15 @@ struct ItemDetailView: View {
       .aspectRatio(contentMode: .fill)
   }
 
+  @ViewBuilder
   private func metaRow(for item: MediaItem) -> some View {
     let parts: [String] = {
       var p: [String] = []
       if let r = item.runtimeSeconds { p.append("\(r / 60) min") }
       return p
     }()
-    return Text(parts.joined(separator: " · "))
+    if !parts.isEmpty {
+      Text(parts.joined(separator: " · "))
+    }
   }
 }

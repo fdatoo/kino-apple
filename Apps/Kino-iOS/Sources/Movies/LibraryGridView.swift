@@ -30,7 +30,7 @@ struct LibraryGridView: View {
         .padding(.horizontal, 16)
         .padding(.bottom, 80)
       }
-      .navigationTitle(vm.kind == .movie ? "Movies" : "Shows")
+      .navigationTitle(vm.kind.displayName)
       .task {
         guard let client else { return }
         await vm.loadInitial(client)

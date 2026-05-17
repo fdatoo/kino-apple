@@ -19,6 +19,14 @@ final class LibraryGridViewModel {
       case .series: "tv_episode"
       }
     }
+
+    /// The user-facing display name for this kind.
+    var displayName: String {
+      switch self {
+      case .movie: "Movies"
+      case .series: "Shows"
+      }
+    }
   }
 
   private let logger = Logger(subsystem: "kino.ios", category: "library")
@@ -58,9 +66,11 @@ final class LibraryGridViewModel {
       if batch.count < pageSize { hasMore = false }
     } catch let error as KinoError {
       self.error = error
+      hasMore = false
       logger.error("library list failed: \(String(describing: error))")
     } catch {
       self.error = .decoding(error)
+      hasMore = false
       logger.error("library list decoding failed: \(String(describing: error))")
     }
   }
