@@ -5,7 +5,6 @@ import SwiftUI
 struct SettingsView: View {
   @Environment(\.kinoClient) private var client
   @Environment(AppState.self) private var appState
-  @Environment(\.dismiss) private var dismiss
   @State private var vm = SettingsViewModel()
 
   var body: some View {
@@ -44,7 +43,6 @@ struct SettingsView: View {
       Button(role: .destructive) {
         Task {
           await appState.signOut()
-          dismiss()
         }
       } label: {
         Label("Sign Out", systemImage: "rectangle.portrait.and.arrow.right")
@@ -62,8 +60,6 @@ struct SettingsView: View {
         "Build",
         value: Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "—"
       )
-      Text("Phase 4 spec")
-        .foregroundStyle(.secondary)
     }
   }
 

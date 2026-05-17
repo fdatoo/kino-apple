@@ -24,11 +24,6 @@ final class SettingsViewModel {
     client?.session.serverInstanceID.uuidString ?? "—"
   }
 
-  /// The user ID for the current session, or "—" if unavailable.
-  var userID: String {
-    client?.session.userID.uuidString ?? "—"
-  }
-
   /// The device name registered with the server, or "—" if unavailable.
   var deviceName: String {
     client?.session.deviceName ?? "—"

@@ -17,6 +17,7 @@
 		A1B2C3D4E5F60007A2B3C4D5 /* StatusPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60017A2B3C4D5 /* StatusPill.swift */; };
 		A1B2C3D4E5F60008A2B3C4D5 /* ErrorBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60018A2B3C4D5 /* ErrorBanner.swift */; };
 		A1B2C3D4E5F60009A2B3C4D5 /* AvatarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60019A2B3C4D5 /* AvatarButton.swift */; };
+		CP1000000000000000000001 /* StatusPillRequestState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CP2000000000000000000001 /* StatusPillRequestState.swift */; };
 		A1B2C3D4E5F6000AA2B3C4D5 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6001AA2B3C4D5 /* MainTabView.swift */; };
 		A1B2C3D4E5F6000BA2B3C4D5 /* MainSplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6001BA2B3C4D5 /* MainSplitView.swift */; };
 		A1B2C3D4E5F6000CA2B3C4D5 /* AccountSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6001CA2B3C4D5 /* AccountSheet.swift */; };
@@ -68,6 +69,7 @@
 		A1B2C3D4E5F60017A2B3C4D5 /* StatusPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPill.swift; sourceTree = "<group>"; };
 		A1B2C3D4E5F60018A2B3C4D5 /* ErrorBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorBanner.swift; sourceTree = "<group>"; };
 		A1B2C3D4E5F60019A2B3C4D5 /* AvatarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarButton.swift; sourceTree = "<group>"; };
+		CP2000000000000000000001 /* StatusPillRequestState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPillRequestState.swift; sourceTree = "<group>"; };
 		A1B2C3D4E5F6001AA2B3C4D5 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		A1B2C3D4E5F6001BA2B3C4D5 /* MainSplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitView.swift; sourceTree = "<group>"; };
 		A1B2C3D4E5F6001CA2B3C4D5 /* AccountSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSheet.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				A1B2C3D4E5F60017A2B3C4D5 /* StatusPill.swift */,
 				A1B2C3D4E5F60018A2B3C4D5 /* ErrorBanner.swift */,
 				A1B2C3D4E5F60019A2B3C4D5 /* AvatarButton.swift */,
+				CP2000000000000000000001 /* StatusPillRequestState.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -352,6 +355,7 @@
 				A1B2C3D4E5F60007A2B3C4D5 /* StatusPill.swift in Sources */,
 				A1B2C3D4E5F60008A2B3C4D5 /* ErrorBanner.swift in Sources */,
 				A1B2C3D4E5F60009A2B3C4D5 /* AvatarButton.swift in Sources */,
+				CP1000000000000000000001 /* StatusPillRequestState.swift in Sources */,
 				A1B2C3D4E5F6000AA2B3C4D5 /* MainTabView.swift in Sources */,
 				A1B2C3D4E5F6000BA2B3C4D5 /* MainSplitView.swift in Sources */,
 				A1B2C3D4E5F6000CA2B3C4D5 /* AccountSheet.swift in Sources */,

@@ -76,7 +76,7 @@ struct RequestDetailView: View {
       Text("Timeline")
         .font(.headline)
         .padding(.bottom, 12)
-      ForEach(Array(events.enumerated()), id: \.offset) { index, event in
+      ForEach(Array(events.enumerated()), id: \.element.id) { index, event in
         HStack(alignment: .top, spacing: 12) {
           VStack(spacing: 0) {
             Circle()
