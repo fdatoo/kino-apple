@@ -55,6 +55,14 @@ struct PlayerContainer: View {
   }
 
   private func start() async {
+    // Reset any prior state before constructing a new coordinator/player.
+    if let existing = coordinator {
+      await existing.stopReporting()
+      coordinator = nil
+    }
+    player?.pause()
+    player = nil
+
     guard let client else { return }
     error = nil
     let coord = PlaybackCoordinator(

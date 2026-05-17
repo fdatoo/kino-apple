@@ -43,6 +43,14 @@ struct ItemDetailView: View {
           if let item = vm.item {
             PlayerContainer(item: item)
               .preferredColorScheme(.dark)
+          } else {
+            VStack(spacing: 16) {
+              Text("Item not loaded").foregroundStyle(.secondary)
+              Button("Close") { showPlayer = false }
+                .buttonStyle(.borderedProminent)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(.black)
           }
         }
       } else if let error = vm.error {

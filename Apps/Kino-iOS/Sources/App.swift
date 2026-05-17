@@ -1,8 +1,25 @@
+import AVFoundation
 import SwiftUI
+import os
 
 @main
 struct KinoApp: App {
   @State private var appState = AppState()
+
+  init() {
+    do {
+      try AVAudioSession.sharedInstance().setCategory(
+        .playback,
+        mode: .moviePlayback,
+        options: [.allowAirPlay]
+      )
+    } catch {
+      // Non-fatal: AVPlayer will use its default session — silenced on lock screen but won't crash.
+      Logger(subsystem: "kino.ios", category: "app").error(
+        "AVAudioSession setCategory failed: \(String(describing: error), privacy: .public)"
+      )
+    }
+  }
 
   var body: some Scene {
     WindowGroup {
