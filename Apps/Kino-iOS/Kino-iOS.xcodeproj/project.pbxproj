@@ -40,7 +40,6 @@
 		76D72FD4AF005F78427746CE /* Kino-iOSUITests.xctest */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.cfbundle; path = "Kino-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1B2C3D4E5F60011A2B3C4D5 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		A1B2C3D4E5F60012A2B3C4D5 /* KinoClientEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KinoClientEnvironment.swift; sourceTree = "<group>"; };
-		A1B2C3D4E5F60020A2B3C4D5 /* Components */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Components; sourceTree = "<group>"; };
 		A1B2C3D4E5F60013A2B3C4D5 /* KinoAsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KinoAsyncImage.swift; sourceTree = "<group>"; };
 		A1B2C3D4E5F60014A2B3C4D5 /* PosterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterCell.swift; sourceTree = "<group>"; };
 		A1B2C3D4E5F60015A2B3C4D5 /* PosterRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterRow.swift; sourceTree = "<group>"; };
@@ -48,7 +47,6 @@
 		A1B2C3D4E5F60017A2B3C4D5 /* StatusPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPill.swift; sourceTree = "<group>"; };
 		A1B2C3D4E5F60018A2B3C4D5 /* ErrorBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorBanner.swift; sourceTree = "<group>"; };
 		A1B2C3D4E5F60019A2B3C4D5 /* AvatarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarButton.swift; sourceTree = "<group>"; };
-		A1B2C3D4E5F60021A2B3C4D5 /* Navigation */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Navigation; sourceTree = "<group>"; };
 		A1B2C3D4E5F6001AA2B3C4D5 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		A1B2C3D4E5F6001BA2B3C4D5 /* MainSplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitView.swift; sourceTree = "<group>"; };
 		A1B2C3D4E5F6001CA2B3C4D5 /* AccountSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSheet.swift; sourceTree = "<group>"; };

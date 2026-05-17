@@ -8,7 +8,6 @@ struct KinoApp: App {
     WindowGroup {
       RootView()
         .environment(appState)
-        .preferredColorScheme(.dark)
         .tint(.white)
     }
   }

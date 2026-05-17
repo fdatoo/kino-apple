@@ -1,6 +1,8 @@
 import KinoKit
 import SwiftUI
 
+// TODO(M3.3 or later): inject auth header into URLRequest when isInternal == true
+
 /// Async image wrapper with rounded clip and a subtle stroke overlay for the Kino aesthetic.
 ///
 /// `isInternal` is reserved for future auth-token injection when server-hosted images require
@@ -9,8 +11,6 @@ struct KinoAsyncImage: View {
   let url: URL?
   let isInternal: Bool
   var cornerRadius: CGFloat = 8
-
-  @Environment(\.kinoClient) private var client
 
   var body: some View {
     AsyncImage(url: url, transaction: .init(animation: .easeOut(duration: 0.18))) { phase in

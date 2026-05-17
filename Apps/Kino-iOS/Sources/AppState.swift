@@ -50,7 +50,11 @@ final class AppState {
 
   func signOut() async {
     guard case .authenticated(let client) = phase else { return }
-    try? await store.remove(serverInstanceID: client.session.serverInstanceID)
+    do {
+      try await store.remove(serverInstanceID: client.session.serverInstanceID)
+    } catch {
+      logger.warning("Failed to remove session from store: \(String(describing: error))")
+    }
     phase = .unauthenticated
   }
 }

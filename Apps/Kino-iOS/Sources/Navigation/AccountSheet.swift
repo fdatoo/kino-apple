@@ -3,7 +3,6 @@ import SwiftUI
 
 /// Account sheet shell — real rows and drill-ins land in M3.6.
 struct AccountSheet: View {
-  @Environment(\.dismiss) private var dismiss
   @Environment(\.kinoClient) private var client
 
   var body: some View {

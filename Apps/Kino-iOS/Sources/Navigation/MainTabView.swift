@@ -1,4 +1,3 @@
-import KinoKit
 import SwiftUI
 
 /// 4-tab capsule navigation: Home / Movies / Shows / Search.
