@@ -17,6 +17,7 @@
 		A1B2C3D4E5F60007A2B3C4D5 /* StatusPill.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60017A2B3C4D5 /* StatusPill.swift */; };
 		A1B2C3D4E5F60008A2B3C4D5 /* ErrorBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60018A2B3C4D5 /* ErrorBanner.swift */; };
 		A1B2C3D4E5F60009A2B3C4D5 /* AvatarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F60019A2B3C4D5 /* AvatarButton.swift */; };
+		CP1000000000000000000001 /* StatusPillRequestState.swift in Sources */ = {isa = PBXBuildFile; fileRef = CP2000000000000000000001 /* StatusPillRequestState.swift */; };
 		A1B2C3D4E5F6000AA2B3C4D5 /* MainTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6001AA2B3C4D5 /* MainTabView.swift */; };
 		A1B2C3D4E5F6000BA2B3C4D5 /* MainSplitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6001BA2B3C4D5 /* MainSplitView.swift */; };
 		A1B2C3D4E5F6000CA2B3C4D5 /* AccountSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6001CA2B3C4D5 /* AccountSheet.swift */; };
@@ -37,6 +38,12 @@
 		SR1000000000000000000002 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = SR2000000000000000000002 /* SearchView.swift */; };
 		HM1000000000000000000001 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = HM2000000000000000000001 /* HomeViewModel.swift */; };
 		HM1000000000000000000002 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = HM2000000000000000000002 /* HomeView.swift */; };
+		RQ1000000000000000000001 /* RequestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = RQ2000000000000000000001 /* RequestsViewModel.swift */; };
+		RQ1000000000000000000002 /* RequestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = RQ2000000000000000000002 /* RequestsView.swift */; };
+		RQ1000000000000000000003 /* RequestDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = RQ2000000000000000000003 /* RequestDetailViewModel.swift */; };
+		RQ1000000000000000000004 /* RequestDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = RQ2000000000000000000004 /* RequestDetailView.swift */; };
+		ST1000000000000000000001 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ST2000000000000000000001 /* SettingsViewModel.swift */; };
+		ST1000000000000000000002 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ST2000000000000000000002 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +69,7 @@
 		A1B2C3D4E5F60017A2B3C4D5 /* StatusPill.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPill.swift; sourceTree = "<group>"; };
 		A1B2C3D4E5F60018A2B3C4D5 /* ErrorBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorBanner.swift; sourceTree = "<group>"; };
 		A1B2C3D4E5F60019A2B3C4D5 /* AvatarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarButton.swift; sourceTree = "<group>"; };
+		CP2000000000000000000001 /* StatusPillRequestState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusPillRequestState.swift; sourceTree = "<group>"; };
 		A1B2C3D4E5F6001AA2B3C4D5 /* MainTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabView.swift; sourceTree = "<group>"; };
 		A1B2C3D4E5F6001BA2B3C4D5 /* MainSplitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitView.swift; sourceTree = "<group>"; };
 		A1B2C3D4E5F6001CA2B3C4D5 /* AccountSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSheet.swift; sourceTree = "<group>"; };
@@ -82,6 +90,12 @@
 		SR2000000000000000000002 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		HM2000000000000000000001 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		HM2000000000000000000002 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		RQ2000000000000000000001 /* RequestsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsViewModel.swift; sourceTree = "<group>"; };
+		RQ2000000000000000000002 /* RequestsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestsView.swift; sourceTree = "<group>"; };
+		RQ2000000000000000000003 /* RequestDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDetailViewModel.swift; sourceTree = "<group>"; };
+		RQ2000000000000000000004 /* RequestDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDetailView.swift; sourceTree = "<group>"; };
+		ST2000000000000000000001 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		ST2000000000000000000002 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +145,7 @@
 				A1B2C3D4E5F60017A2B3C4D5 /* StatusPill.swift */,
 				A1B2C3D4E5F60018A2B3C4D5 /* ErrorBanner.swift */,
 				A1B2C3D4E5F60019A2B3C4D5 /* AvatarButton.swift */,
+				CP2000000000000000000001 /* StatusPillRequestState.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -188,6 +203,26 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		RQ3000000000000000000001 /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				RQ2000000000000000000001 /* RequestsViewModel.swift */,
+				RQ2000000000000000000002 /* RequestsView.swift */,
+				RQ2000000000000000000003 /* RequestDetailViewModel.swift */,
+				RQ2000000000000000000004 /* RequestDetailView.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		ST3000000000000000000001 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				ST2000000000000000000001 /* SettingsViewModel.swift */,
+				ST2000000000000000000002 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		DE22E39B032DDAF0C6999204 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +235,8 @@
 				HM3000000000000000000001 /* Home */,
 				MV3000000000000000000001 /* Movies */,
 				SR3000000000000000000001 /* Search */,
+				RQ3000000000000000000001 /* Requests */,
+				ST3000000000000000000001 /* Settings */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -318,6 +355,7 @@
 				A1B2C3D4E5F60007A2B3C4D5 /* StatusPill.swift in Sources */,
 				A1B2C3D4E5F60008A2B3C4D5 /* ErrorBanner.swift in Sources */,
 				A1B2C3D4E5F60009A2B3C4D5 /* AvatarButton.swift in Sources */,
+				CP1000000000000000000001 /* StatusPillRequestState.swift in Sources */,
 				A1B2C3D4E5F6000AA2B3C4D5 /* MainTabView.swift in Sources */,
 				A1B2C3D4E5F6000BA2B3C4D5 /* MainSplitView.swift in Sources */,
 				A1B2C3D4E5F6000CA2B3C4D5 /* AccountSheet.swift in Sources */,
@@ -336,6 +374,12 @@
 				SR1000000000000000000002 /* SearchView.swift in Sources */,
 				HM1000000000000000000001 /* HomeViewModel.swift in Sources */,
 				HM1000000000000000000002 /* HomeView.swift in Sources */,
+				RQ1000000000000000000001 /* RequestsViewModel.swift in Sources */,
+				RQ1000000000000000000002 /* RequestsView.swift in Sources */,
+				RQ1000000000000000000003 /* RequestDetailViewModel.swift in Sources */,
+				RQ1000000000000000000004 /* RequestDetailView.swift in Sources */,
+				ST1000000000000000000001 /* SettingsViewModel.swift in Sources */,
+				ST1000000000000000000002 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
