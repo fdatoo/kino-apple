@@ -5,20 +5,18 @@ import SwiftUI
 struct CodeView: View {
   let challenge: PairingChallenge
 
-  @State private var now: Date = .now
-
-  private var remaining: TimeInterval {
-    max(0, challenge.expiresAt.timeIntervalSince(now))
+  private func remaining(at date: Date) -> TimeInterval {
+    max(0, challenge.expiresAt.timeIntervalSince(date))
   }
 
-  private var formattedCountdown: String {
-    let total = Int(remaining)
+  private func formattedCountdown(at date: Date) -> String {
+    let total = Int(remaining(at: date))
     let minutes = total / 60
     let seconds = total % 60
     return String(format: "%d:%02d", minutes, seconds)
   }
 
-  private var isExpired: Bool { remaining <= 0 }
+  private func isExpired(at date: Date) -> Bool { remaining(at: date) <= 0 }
 
   private func formatCode(_ raw: String) -> String {
     raw.count == 6 ? "\(raw.prefix(3))\u{2009}\(raw.suffix(3))" : raw
@@ -39,17 +37,19 @@ struct CodeView: View {
           .font(.system(size: 56, weight: .bold, design: .monospaced))
           .foregroundStyle(.primary)
 
-        Group {
-          if isExpired {
-            Text("Code expired")
-              .foregroundStyle(.red)
-          } else {
-            Text("Expires in \(formattedCountdown)")
-              .foregroundStyle(.secondary)
+        TimelineView(.periodic(from: .now, by: 1)) { context in
+          Group {
+            if isExpired(at: context.date) {
+              Text("Code expired")
+                .foregroundStyle(.red)
+            } else {
+              Text("Expires in \(formattedCountdown(at: context.date))")
+                .foregroundStyle(.secondary)
+            }
           }
+          .font(.subheadline)
+          .monospacedDigit()
         }
-        .font(.subheadline)
-        .monospacedDigit()
       }
 
       Divider()
@@ -81,11 +81,6 @@ struct CodeView: View {
           .foregroundStyle(.secondary)
       }
       .padding(.bottom, 32)
-    }
-    .onReceive(
-      Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-    ) { _ in
-      now = Date()
     }
   }
 

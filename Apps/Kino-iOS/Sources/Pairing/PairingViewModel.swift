@@ -17,6 +17,7 @@ final class PairingViewModel {
   }
 
   private let logger = Logger(subsystem: "kino.ios", category: "pairing")
+  private let discovery = ServerDiscovery()
   private var discoveryTask: Task<Void, Never>?
   private var pollTask: Task<Void, Never>?
   private weak var appState: AppState?
@@ -30,10 +31,9 @@ final class PairingViewModel {
   func startDiscovery() {
     discoveryTask?.cancel()
     discoveryTask = Task { [weak self] in
-      let discovery = ServerDiscovery()
-      let stream = await discovery.browse()
+      guard let self else { return }
+      let stream = await self.discovery.browse()
       for await server in stream {
-        guard let self else { return }
         guard case .discovering(var current) = self.phase else { return }
         if !current.contains(where: { $0.instanceID == server.instanceID }) {
           current.append(server)
@@ -43,15 +43,16 @@ final class PairingViewModel {
     }
   }
 
-  /// Cancels in-flight discovery.
+  /// Cancels the discovery browser and any in-flight pairing approval poll.
   func stopDiscovery() {
     discoveryTask?.cancel()
     discoveryTask = nil
+    pollTask?.cancel()
+    pollTask = nil
   }
 
   /// Resolves a discovered server then requests a pairing code.
   func select(_ server: DiscoveredServer) async {
-    let discovery = ServerDiscovery()
     do {
       let resolved = try await discovery.resolve(server)
       await requestCode(for: resolved)
