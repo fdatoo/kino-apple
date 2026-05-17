@@ -6,12 +6,15 @@ final class LaunchSmokeTests: XCTestCase {
     let app = XCUIApplication()
     app.launch()
     XCTAssertTrue(app.state == .runningForeground)
-    // Until M3.2 lands, the unauth placeholder text or the tab bar should be present.
-    // On simulator the Keychain may be unavailable, producing the error state instead.
-    let unauthLabel = app.staticTexts["Pairing UI lands in M3.2"]
-    let tabBar = app.tabBars.firstMatch
+    // The app may be in unauth state (pairing UI), authenticated (tab bar), or
+    // error state (Keychain unavailable on Simulator). All are valid launch outcomes.
+    let pairingHeader = app.staticTexts["Find your server"]
     let errorLabel = app.staticTexts["Couldn't load session"]
+    let tabBar = app.tabBars.firstMatch
     XCTAssertTrue(
-      unauthLabel.waitForExistence(timeout: 5) || tabBar.exists || errorLabel.exists)
+      pairingHeader.waitForExistence(timeout: 5)
+        || errorLabel.exists
+        || tabBar.exists
+    )
   }
 }

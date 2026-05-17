@@ -22,9 +22,7 @@ private struct RootView: View {
     case .loading:
       ProgressView().controlSize(.large)
     case .unauthenticated:
-      // PairingFlow lands in M3.2.
-      Text("Pairing UI lands in M3.2")
-        .foregroundStyle(.secondary)
+      PairingFlow()
     case .authenticated(let client):
       AdaptiveRoot()
         .environment(\.kinoClient, client)

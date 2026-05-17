@@ -22,6 +22,11 @@
 		A1B2C3D4E5F6000CA2B3C4D5 /* AccountSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1B2C3D4E5F6001CA2B3C4D5 /* AccountSheet.swift */; };
 		EDEE471449BC0507867F7EAB /* KinoKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2C72175A3B6818306FD6DF32 /* KinoKit */; };
 		FEF3FD13A05E29B3A380D0D7 /* LaunchSmokeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B24DC7890F8A1D90DDD3CE41 /* LaunchSmokeTests.swift */; };
+		PA1000000000000000000001 /* PairingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = PA2000000000000000000001 /* PairingFlow.swift */; };
+		PA1000000000000000000002 /* PairingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = PA2000000000000000000002 /* PairingViewModel.swift */; };
+		PA1000000000000000000003 /* ServerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = PA2000000000000000000003 /* ServerListView.swift */; };
+		PA1000000000000000000004 /* ManualURLEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = PA2000000000000000000004 /* ManualURLEntryView.swift */; };
+		PA1000000000000000000005 /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = PA2000000000000000000005 /* CodeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +57,11 @@
 		A1B2C3D4E5F6001CA2B3C4D5 /* AccountSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSheet.swift; sourceTree = "<group>"; };
 		B24DC7890F8A1D90DDD3CE41 /* LaunchSmokeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchSmokeTests.swift; sourceTree = "<group>"; };
 		C2CDC0220292A74D0D00B2A5 /* Kino-iOS.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = "Kino-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		PA2000000000000000000001 /* PairingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingFlow.swift; sourceTree = "<group>"; };
+		PA2000000000000000000002 /* PairingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PairingViewModel.swift; sourceTree = "<group>"; };
+		PA2000000000000000000003 /* ServerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListView.swift; sourceTree = "<group>"; };
+		PA2000000000000000000004 /* ManualURLEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualURLEntryView.swift; sourceTree = "<group>"; };
+		PA2000000000000000000005 /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +125,18 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
+		PA3000000000000000000001 /* Pairing */ = {
+			isa = PBXGroup;
+			children = (
+				PA2000000000000000000001 /* PairingFlow.swift */,
+				PA2000000000000000000002 /* PairingViewModel.swift */,
+				PA2000000000000000000003 /* ServerListView.swift */,
+				PA2000000000000000000004 /* ManualURLEntryView.swift */,
+				PA2000000000000000000005 /* CodeView.swift */,
+			);
+			path = Pairing;
+			sourceTree = "<group>";
+		};
 		DE22E39B032DDAF0C6999204 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,6 +145,7 @@
 				A1B2C3D4E5F60012A2B3C4D5 /* KinoClientEnvironment.swift */,
 				A1B2C3D4E5F60030A2B3C4D5 /* Components */,
 				A1B2C3D4E5F60031A2B3C4D5 /* Navigation */,
+				PA3000000000000000000001 /* Pairing */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -244,6 +267,11 @@
 				A1B2C3D4E5F6000AA2B3C4D5 /* MainTabView.swift in Sources */,
 				A1B2C3D4E5F6000BA2B3C4D5 /* MainSplitView.swift in Sources */,
 				A1B2C3D4E5F6000CA2B3C4D5 /* AccountSheet.swift in Sources */,
+				PA1000000000000000000001 /* PairingFlow.swift in Sources */,
+				PA1000000000000000000002 /* PairingViewModel.swift in Sources */,
+				PA1000000000000000000003 /* ServerListView.swift in Sources */,
+				PA1000000000000000000004 /* ManualURLEntryView.swift in Sources */,
+				PA1000000000000000000005 /* CodeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
