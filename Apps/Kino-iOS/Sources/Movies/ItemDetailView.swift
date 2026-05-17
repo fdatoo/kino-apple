@@ -6,6 +6,7 @@ struct ItemDetailView: View {
   let itemID: UUID
   @Environment(\.kinoClient) private var client
   @State private var vm = ItemDetailViewModel()
+  @State private var showPlayer = false
 
   var body: some View {
     ScrollView {
@@ -28,7 +29,7 @@ struct ItemDetailView: View {
           .padding(.horizontal, 16)
           .padding(.bottom, 16)
         }
-        Button(action: {}) {
+        Button(action: { showPlayer = true }) {
           Label("Play", systemImage: "play.fill")
             .frame(maxWidth: .infinity)
             .padding(.vertical, 11)
@@ -38,6 +39,12 @@ struct ItemDetailView: View {
         .foregroundStyle(.black)
         .padding(.horizontal, 16)
         .padding(.top, 12)
+        .fullScreenCover(isPresented: $showPlayer) {
+          if let item = vm.item {
+            PlayerContainer(item: item)
+              .preferredColorScheme(.dark)
+          }
+        }
       } else if let error = vm.error {
         VStack(spacing: 16) {
           Text("Couldn't load this title").font(.headline)

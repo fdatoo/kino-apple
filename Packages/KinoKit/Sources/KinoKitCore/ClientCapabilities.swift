@@ -30,3 +30,14 @@ public struct ClientCapabilities: Sendable, Hashable, Codable {
     self.atmos = atmos
   }
 }
+
+extension ClientCapabilities {
+  /// Default iOS 17+ iPhone/iPad capabilities: H.264 + HEVC + AV1, HDR10 + Dolby Vision, 2160p, surround + Atmos.
+  public static let iOS17Default = ClientCapabilities(
+    codecs: [.h264, .hevc, .av1],
+    hdr: [.hdr10, .dolbyVision],
+    maxHeight: 2160,
+    surroundAudio: true,
+    atmos: true
+  )
+}
