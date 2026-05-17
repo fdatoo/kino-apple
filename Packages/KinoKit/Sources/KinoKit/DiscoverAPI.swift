@@ -7,6 +7,9 @@ public typealias DiscoverKind = Components.Schemas.DiscoverKind
 /// TMDB-backed discover response.
 public typealias DiscoverResponse = Components.Schemas.DiscoverResponse
 
+/// A single TMDB candidate returned by a discover search.
+public typealias DiscoverCandidate = Components.Schemas.DiscoverCandidate
+
 /// TMDB-backed discovery API wrapper.
 public struct DiscoverAPI: Sendable {
   private let transport: KinoTransport
