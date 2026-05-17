@@ -34,10 +34,7 @@ struct SearchView: View {
       Image(systemName: "magnifyingglass").foregroundStyle(.secondary)
       TextField(
         "Library and TMDB",
-        text: Binding(
-          get: { vm.query },
-          set: { vm.query = $0 }
-        )
+        text: $vm.query
       )
       .textInputAutocapitalization(.never)
       .autocorrectionDisabled()

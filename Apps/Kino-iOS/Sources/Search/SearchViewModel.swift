@@ -41,6 +41,7 @@ final class SearchViewModel {
     recents.insert(trimmed, at: 0)
     if recents.count > maxRecents { recents.removeLast(recents.count - maxRecents) }
     UserDefaults.standard.set(recents, forKey: recentsKey)
+    scheduleSearch()
   }
 
   /// Requests a TMDB candidate via the server; surfaces server errors into `error`.
@@ -64,6 +65,7 @@ final class SearchViewModel {
       libraryResults = []
       discoverResults = []
       isSearching = false
+      error = nil
       return
     }
     searchTask = Task { [weak self] in
@@ -77,6 +79,7 @@ final class SearchViewModel {
 
   private func performSearch(_ q: String, client: KinoClient) async {
     isSearching = true
+    error = nil
     defer { isSearching = false }
     async let library = client.library.list(limit: 30, q: q)
     async let movies = client.discover.search(q: q, kind: .movie)
@@ -89,9 +92,13 @@ final class SearchViewModel {
       discoverResults = merged
       self.error = nil
     } catch let kinoError as KinoError {
+      libraryResults = []
+      discoverResults = []
       self.error = kinoError
       logger.error("search failed: \(String(describing: kinoError))")
     } catch {
+      libraryResults = []
+      discoverResults = []
       self.error = .decoding(error)
       logger.error("search decoding failed: \(String(describing: error))")
     }
