@@ -138,6 +138,7 @@ struct HomeView: View {
     posterStrip(
       label: "Continue Watching",
       items: vm.continueWatching,
+      id: \.libraryItem.id,
       posterURL: { posterURL(itemID: $0.libraryItem.id) },
       targetID: { UUID(uuidString: $0.libraryItem.id) }
     )
@@ -147,15 +148,17 @@ struct HomeView: View {
     posterStrip(
       label: "Recently Added",
       items: vm.recentlyAdded,
+      id: \.id,
       posterURL: { posterURL(uuid: $0.id) },
       targetID: { $0.id }
     )
   }
 
   @ViewBuilder
-  private func posterStrip<Item>(
+  private func posterStrip<Item, ID: Hashable>(
     label: String,
     items: [Item],
+    id: KeyPath<Item, ID>,
     posterURL: @escaping (Item) -> URL?,
     targetID: @escaping (Item) -> UUID?
   ) -> some View {
@@ -165,10 +168,9 @@ struct HomeView: View {
         .padding(.horizontal, 16)
       ScrollView(.horizontal, showsIndicators: false) {
         HStack(spacing: 8) {
-          ForEach(items.indices, id: \.self) { idx in
-            let item = items[idx]
-            if let id = targetID(item) {
-              NavigationLink(value: id) {
+          ForEach(items, id: id) { item in
+            if let uuid = targetID(item) {
+              NavigationLink(value: uuid) {
                 PosterCell(url: posterURL(item), title: nil)
                   .frame(width: 110)
               }

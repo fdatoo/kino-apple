@@ -7,9 +7,6 @@ public typealias InProgressItem = Components.Schemas.InProgressItem
 /// A library item summary embedded in playback and catalog responses.
 public typealias LibraryItemSummary = Components.Schemas.LibraryItemSummary
 
-/// Paginated list of in-progress playback items.
-public typealias PlaybackProgressList = Components.Schemas.PlaybackProgressList
-
 /// Playback progress API wrapper.
 public struct PlaybackAPI: PlaybackReporting, Sendable {
   private let transport: KinoTransport
