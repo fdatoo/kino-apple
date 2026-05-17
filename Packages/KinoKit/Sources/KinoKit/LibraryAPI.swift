@@ -10,12 +10,22 @@ public struct LibraryAPI: Sendable {
     self.transport = transport
   }
 
-  /// Lists media items in the library.
-  public func list(limit: Int? = nil, offset: Int? = nil, q: String? = nil) async throws
-    -> [MediaItem]
-  {
+  /// Lists media items in the library, optionally filtered by media kind.
+  ///
+  /// - Parameters:
+  ///   - kind: Server-side media kind filter (e.g. `"movie"`, `"tv_episode"`). Pass `nil` to return all kinds.
+  ///   - limit: Maximum number of items to return.
+  ///   - offset: Number of matching items to skip for pagination.
+  ///   - q: Full-text search query across title and related fields.
+  public func list(
+    kind: String? = nil,
+    limit: Int? = nil,
+    offset: Int? = nil,
+    q: String? = nil
+  ) async throws -> [MediaItem] {
     let output = try await transport.makeClient().listCatalogItems(
       query: .init(
+        kind: kind,
         q: q,
         limit: limit.map(Int32.init),
         offset: offset.map(Int64.init)

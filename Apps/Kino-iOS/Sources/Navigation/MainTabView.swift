@@ -17,10 +17,10 @@ struct MainTabView: View {
             AvatarButton(initial: "F", badgeCount: 0) { showAccountSheet = true }
           }
         }
-      TabPlaceholder(title: "Movies")
+      MoviesView()
         .tabItem { Label("Movies", systemImage: "film.stack") }
         .tag(Tab.movies)
-      TabPlaceholder(title: "Shows")
+      ShowsView()
         .tabItem { Label("Shows", systemImage: "tv") }
         .tag(Tab.shows)
       TabPlaceholder(title: "Search")

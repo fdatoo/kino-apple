@@ -34,6 +34,26 @@ final class LibraryAPITests: XCTestCase {
     XCTAssertEqual(items.first?.subtitleTracks.count, 1)
   }
 
+  func test_listWithKindFiltersToKind() async throws {
+    nonisolated(unsafe) var observed: URLRequest?
+    StubURLProtocol.push(
+      when: { request in
+        observed = request
+        return request.url?.path == "/api/v1/library/items"
+      },
+      .init(status: 200, headers: ["Content-Type": "application/json"], body: catalogListJSON)
+    )
+
+    let items = try await testClient().library.list(kind: "movie", limit: 1)
+
+    let request = try XCTUnwrap(observed)
+    XCTAssertEqual(request.httpMethod, "GET")
+    assertAuthorized(request)
+    XCTAssertEqual(queryValue("kind", in: request), "movie")
+    XCTAssertEqual(queryValue("limit", in: request), "1")
+    XCTAssertEqual(items.count, 1)
+  }
+
   func test_getMapsToGetCatalogItem() async throws {
     let id = UUID(uuidString: "00000000-0000-0000-0000-000000000101")!
     nonisolated(unsafe) var observed: URLRequest?
