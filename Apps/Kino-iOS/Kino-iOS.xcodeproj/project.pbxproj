@@ -44,6 +44,8 @@
 		RQ1000000000000000000004 /* RequestDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = RQ2000000000000000000004 /* RequestDetailView.swift */; };
 		ST1000000000000000000001 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ST2000000000000000000001 /* SettingsViewModel.swift */; };
 		ST1000000000000000000002 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ST2000000000000000000002 /* SettingsView.swift */; };
+		PL1000000000000000000001 /* AVPlayerViewControllerRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = PL2000000000000000000001 /* AVPlayerViewControllerRepresentable.swift */; };
+		PL1000000000000000000002 /* PlayerContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = PL2000000000000000000002 /* PlayerContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +98,8 @@
 		RQ2000000000000000000004 /* RequestDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDetailView.swift; sourceTree = "<group>"; };
 		ST2000000000000000000001 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		ST2000000000000000000002 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		PL2000000000000000000001 /* AVPlayerViewControllerRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayerViewControllerRepresentable.swift; sourceTree = "<group>"; };
+		PL2000000000000000000002 /* PlayerContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +227,15 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		PL3000000000000000000001 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				PL2000000000000000000001 /* AVPlayerViewControllerRepresentable.swift */,
+				PL2000000000000000000002 /* PlayerContainer.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
 		DE22E39B032DDAF0C6999204 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,6 +250,7 @@
 				SR3000000000000000000001 /* Search */,
 				RQ3000000000000000000001 /* Requests */,
 				ST3000000000000000000001 /* Settings */,
+				PL3000000000000000000001 /* Player */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -380,6 +394,8 @@
 				RQ1000000000000000000004 /* RequestDetailView.swift in Sources */,
 				ST1000000000000000000001 /* SettingsViewModel.swift in Sources */,
 				ST1000000000000000000002 /* SettingsView.swift in Sources */,
+				PL1000000000000000000001 /* AVPlayerViewControllerRepresentable.swift in Sources */,
+				PL1000000000000000000002 /* PlayerContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,6 +436,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				INFOPLIST_KEY_UIBackgroundModes = audio;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -457,6 +474,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
+				INFOPLIST_KEY_UIBackgroundModes = audio;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

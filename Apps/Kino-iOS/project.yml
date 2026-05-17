@@ -35,6 +35,7 @@ targets:
         INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents: YES
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
         INFOPLIST_KEY_UIUserInterfaceStyle: Dark
+        INFOPLIST_KEY_UIBackgroundModes: audio
   Kino-iOSUITests:
     type: bundle.ui-testing
     platform: iOS
