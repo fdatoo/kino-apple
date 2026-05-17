@@ -27,6 +27,12 @@
 		PA1000000000000000000003 /* ServerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = PA2000000000000000000003 /* ServerListView.swift */; };
 		PA1000000000000000000004 /* ManualURLEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = PA2000000000000000000004 /* ManualURLEntryView.swift */; };
 		PA1000000000000000000005 /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = PA2000000000000000000005 /* CodeView.swift */; };
+		MV1000000000000000000001 /* LibraryGridViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = MV2000000000000000000001 /* LibraryGridViewModel.swift */; };
+		MV1000000000000000000002 /* LibraryGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MV2000000000000000000002 /* LibraryGridView.swift */; };
+		MV1000000000000000000003 /* MoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MV2000000000000000000003 /* MoviesView.swift */; };
+		MV1000000000000000000004 /* ShowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MV2000000000000000000004 /* ShowsView.swift */; };
+		MV1000000000000000000005 /* ItemDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = MV2000000000000000000005 /* ItemDetailViewModel.swift */; };
+		MV1000000000000000000006 /* ItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = MV2000000000000000000006 /* ItemDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +68,12 @@
 		PA2000000000000000000003 /* ServerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerListView.swift; sourceTree = "<group>"; };
 		PA2000000000000000000004 /* ManualURLEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualURLEntryView.swift; sourceTree = "<group>"; };
 		PA2000000000000000000005 /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
+		MV2000000000000000000001 /* LibraryGridViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryGridViewModel.swift; sourceTree = "<group>"; };
+		MV2000000000000000000002 /* LibraryGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LibraryGridView.swift; sourceTree = "<group>"; };
+		MV2000000000000000000003 /* MoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesView.swift; sourceTree = "<group>"; };
+		MV2000000000000000000004 /* ShowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsView.swift; sourceTree = "<group>"; };
+		MV2000000000000000000005 /* ItemDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewModel.swift; sourceTree = "<group>"; };
+		MV2000000000000000000006 /* ItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +149,19 @@
 			path = Pairing;
 			sourceTree = "<group>";
 		};
+		MV3000000000000000000001 /* Movies */ = {
+			isa = PBXGroup;
+			children = (
+				MV2000000000000000000001 /* LibraryGridViewModel.swift */,
+				MV2000000000000000000002 /* LibraryGridView.swift */,
+				MV2000000000000000000003 /* MoviesView.swift */,
+				MV2000000000000000000004 /* ShowsView.swift */,
+				MV2000000000000000000005 /* ItemDetailViewModel.swift */,
+				MV2000000000000000000006 /* ItemDetailView.swift */,
+			);
+			path = Movies;
+			sourceTree = "<group>";
+		};
 		DE22E39B032DDAF0C6999204 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +171,7 @@
 				A1B2C3D4E5F60030A2B3C4D5 /* Components */,
 				A1B2C3D4E5F60031A2B3C4D5 /* Navigation */,
 				PA3000000000000000000001 /* Pairing */,
+				MV3000000000000000000001 /* Movies */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -272,6 +298,12 @@
 				PA1000000000000000000003 /* ServerListView.swift in Sources */,
 				PA1000000000000000000004 /* ManualURLEntryView.swift in Sources */,
 				PA1000000000000000000005 /* CodeView.swift in Sources */,
+				MV1000000000000000000001 /* LibraryGridViewModel.swift in Sources */,
+				MV1000000000000000000002 /* LibraryGridView.swift in Sources */,
+				MV1000000000000000000003 /* MoviesView.swift in Sources */,
+				MV1000000000000000000004 /* ShowsView.swift in Sources */,
+				MV1000000000000000000005 /* ItemDetailViewModel.swift in Sources */,
+				MV1000000000000000000006 /* ItemDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
