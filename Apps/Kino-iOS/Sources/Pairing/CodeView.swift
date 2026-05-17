@@ -20,14 +20,23 @@ struct CodeView: View {
 
   private var isExpired: Bool { remaining <= 0 }
 
+  private func formatCode(_ raw: String) -> String {
+    raw.count == 6 ? "\(raw.prefix(3))\u{2009}\(raw.suffix(3))" : raw
+  }
+
   var body: some View {
     VStack(spacing: 32) {
-      Spacer()
+      HStack {
+        Text("Approve to pair")
+          .font(.title.weight(.heavy))
+        Spacer()
+      }
+      .padding(.horizontal, 22)
+      .padding(.top, 8)
 
       VStack(spacing: 8) {
-        Text(challenge.code)
+        Text(formatCode(challenge.code))
           .font(.system(size: 56, weight: .bold, design: .monospaced))
-          .tracking(8)
           .foregroundStyle(.primary)
 
         Group {
@@ -73,8 +82,6 @@ struct CodeView: View {
       }
       .padding(.bottom, 32)
     }
-    .navigationTitle("Pair with Kino")
-    .navigationBarTitleDisplayMode(.inline)
     .onReceive(
       Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     ) { _ in

@@ -11,7 +11,6 @@ final class PairingViewModel {
   /// The current phase of the pairing flow.
   enum Phase: Sendable {
     case discovering([DiscoveredServer])
-    case manualEntry
     case requestingCode(ResolvedServer)
     case awaitingApproval(PairingChallenge, ResolvedServer)
     case failed(PairingError)

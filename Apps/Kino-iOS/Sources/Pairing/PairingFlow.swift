@@ -20,13 +20,6 @@ struct PairingFlow: View {
           onManualEntry: { showManualEntry = true }
         )
 
-      case .manualEntry:
-        ServerListView(
-          servers: [],
-          onSelect: { server in await vm.select(server) },
-          onManualEntry: { showManualEntry = true }
-        )
-
       case .requestingCode(let server):
         VStack(spacing: 16) {
           ProgressView()
