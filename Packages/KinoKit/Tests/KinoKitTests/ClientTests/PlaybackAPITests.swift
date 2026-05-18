@@ -16,6 +16,7 @@ final class PlaybackAPITests: XCTestCase {
       when: { request in
         observed = request
         return request.url?.path == "/api/v1/playback/progress"
+          && request.httpMethod == "POST"
       },
       .init(status: 204, headers: [:], body: Data())
     )
@@ -55,6 +56,7 @@ final class PlaybackAPITests: XCTestCase {
       when: { request in
         observed = request
         return request.url?.path == "/api/v1/playback/progress"
+          && request.httpMethod == "GET"
       },
       .init(
         status: 200, headers: ["Content-Type": "application/json"], body: progressListJSON)
