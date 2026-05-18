@@ -1,25 +1,28 @@
 import KinoKit
 import SwiftUI
+import UIKit
 
-// TODO(M3.3 or later): inject auth header into URLRequest when isInternal == true
-
-/// Async image wrapper with rounded clip and a subtle stroke overlay for the Kino aesthetic.
+/// Authenticated async image with rounded clip and a subtle stroke overlay for the Kino aesthetic.
 ///
-/// `isInternal` is reserved for future auth-token injection when server-hosted images require
-/// authentication headers. For now all URLs load via `URLSession.shared`.
+/// `isInternal` controls whether the bearer token from the active `KinoClient` is sent —
+/// `true` for kino-server-hosted images (poster/backdrop endpoints require auth);
+/// `false` for off-server URLs (e.g., TMDB).
 struct KinoAsyncImage: View {
   let url: URL?
   let isInternal: Bool
   var cornerRadius: CGFloat = 8
 
+  @Environment(\.kinoClient) private var client
+  @State private var image: UIImage?
+  @State private var loadFailed = false
+
   var body: some View {
-    AsyncImage(url: url, transaction: .init(animation: .easeOut(duration: 0.18))) { phase in
-      switch phase {
-      case .success(let image):
-        image.resizable().aspectRatio(contentMode: .fill)
-      case .failure, .empty:
-        Rectangle().fill(Color(.tertiarySystemFill))
-      @unknown default:
+    Group {
+      if let image {
+        Image(uiImage: image)
+          .resizable()
+          .aspectRatio(contentMode: .fill)
+      } else {
         Rectangle().fill(Color(.tertiarySystemFill))
       }
     }
@@ -35,5 +38,22 @@ struct KinoAsyncImage: View {
           lineWidth: 0.5
         )
     )
+    .task(id: url) { await load() }
+  }
+
+  private func load() async {
+    image = nil
+    loadFailed = false
+    guard let url, let client else { return }
+    do {
+      let data = try await client.images.loadImage(url: url, isInternal: isInternal)
+      if let decoded = UIImage(data: data) {
+        await MainActor.run { self.image = decoded }
+      } else {
+        await MainActor.run { self.loadFailed = true }
+      }
+    } catch {
+      await MainActor.run { self.loadFailed = true }
+    }
   }
 }

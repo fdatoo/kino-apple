@@ -65,10 +65,12 @@ struct PlayerContainer: View {
 
     guard let client else { return }
     error = nil
+    let token = client.session.token
     let coord = PlaybackCoordinator(
       reporter: client.playback,
       item: item,
-      capabilities: .iOS17Default
+      capabilities: .iOS17Default,
+      token: { token }
     )
     coordinator = coord
     do {
