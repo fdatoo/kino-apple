@@ -12,12 +12,14 @@ struct ItemDetailView: View {
     ScrollView {
       if let item = vm.item {
         ZStack(alignment: .bottomLeading) {
-          backdrop(for: item).frame(height: 380).clipped()
+          backdrop(for: item)
+            .frame(maxWidth: .infinity, maxHeight: 380)
+            .clipped()
           LinearGradient(
             colors: [.clear, .black],
             startPoint: .top, endPoint: .bottom
           )
-          .frame(height: 380)
+          .frame(maxWidth: .infinity, maxHeight: 380)
           VStack(alignment: .leading, spacing: 4) {
             Text(item.title)
               .font(.system(size: 34, weight: .heavy))
@@ -31,14 +33,15 @@ struct ItemDetailView: View {
         }
         Button(action: { showPlayer = true }) {
           Label("Play", systemImage: "play.fill")
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 11)
+            .frame(maxWidth: 200)
+            .padding(.vertical, 8)
         }
         .buttonStyle(.borderedProminent)
         .tint(.white)
         .foregroundStyle(.black)
+        .padding(.top, 16)
+        .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 16)
-        .padding(.top, 12)
         .fullScreenCover(isPresented: $showPlayer) {
           if let item = vm.item {
             PlayerContainer(item: item)

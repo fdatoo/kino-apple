@@ -45,9 +45,16 @@ final class SearchViewModel {
   }
 
   /// Requests a TMDB candidate via the server; surfaces server errors into `error`.
+  ///
+  /// We already know the canonical identity from the discover candidate, so we
+  /// short-circuit server-side TMDB lookup by passing it explicitly. The display
+  /// `query` carries the human-readable title.
   func submitRequest(for candidate: DiscoverCandidate, client: KinoClient) async {
     do {
-      _ = try await client.requests.create(kind: candidate.kind, tmdbID: Int(candidate.tmdbId))
+      _ = try await client.requests.create(
+        query: requestQuery(for: candidate),
+        canonicalIdentityID: canonicalIdentity(for: candidate)
+      )
       discoverResults.removeAll { $0.tmdbId == candidate.tmdbId }
     } catch let kinoError as KinoError {
       self.error = kinoError
@@ -56,6 +63,21 @@ final class SearchViewModel {
       self.error = .decoding(error)
       logger.error("requests.create decoding failed: \(String(describing: error))")
     }
+  }
+
+  /// Display-friendly target string. Year, if present, helps the server's request
+  /// timeline/UI surfaces and serves as a fallback if `canonicalIdentityID` is ever
+  /// rejected.
+  private func requestQuery(for candidate: DiscoverCandidate) -> String {
+    if let year = candidate.year {
+      return "\(candidate.title) \(year)"
+    }
+    return candidate.title
+  }
+
+  /// Canonical identity in the server's `tmdb:<kind>:<id>` format.
+  private func canonicalIdentity(for candidate: DiscoverCandidate) -> String {
+    "tmdb:\(candidate.kind.rawValue):\(candidate.tmdbId)"
   }
 
   private func scheduleSearch() {

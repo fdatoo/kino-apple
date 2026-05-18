@@ -8,6 +8,8 @@ public actor PlaybackCoordinator {
   private let reporterClient: any PlaybackReporting
   private let item: MediaItem
   private let capabilities: ClientCapabilities
+  private let baseURL: URL?
+  private let token: @Sendable () -> String?
   private let logger = Logger(subsystem: "kino.kit", category: "playback")
   private var plan: PlaybackPlan?
   private var progressReporter: ProgressReporter?
@@ -16,14 +18,23 @@ public actor PlaybackCoordinator {
   private var playerObservation: PlayerObservation?
 
   /// Creates a playback coordinator for one item and capability set.
+  ///
+  /// `baseURL` is the kino-server origin used to resolve relative stream URLs
+  /// produced by `VariantChooser` (which doesn't know about the server origin).
+  /// `token` returns the bearer token to attach to AVURLAsset HTTP headers so that
+  /// kino-server's authenticated stream endpoints accept the request.
   public init(
     reporter: any PlaybackReporting,
     item: MediaItem,
-    capabilities: ClientCapabilities
+    capabilities: ClientCapabilities,
+    baseURL: URL? = nil,
+    token: @escaping @Sendable () -> String? = { nil }
   ) {
     self.reporterClient = reporter
     self.item = item
     self.capabilities = capabilities
+    self.baseURL = baseURL
+    self.token = token
   }
 
   /// Prepares the initial playback plan.
@@ -35,9 +46,20 @@ public actor PlaybackCoordinator {
     return plan
   }
 
-  /// Builds an AVPlayer item for a playback plan.
+  /// Builds an AVPlayer item for a playback plan, attaching the bearer token
+  /// to AVURLAsset's HTTP header fields so authenticated kino-server endpoints accept it.
   public nonisolated func makePlayerItem(_ plan: PlaybackPlan) -> AVPlayerItem {
-    AVPlayerItem(url: url(for: plan.source))
+    let assetURL = url(for: plan.source)
+    guard let token = self.token() else {
+      return AVPlayerItem(url: assetURL)
+    }
+    let asset = AVURLAsset(
+      url: assetURL,
+      options: [
+        "AVURLAssetHTTPHeaderFieldsKey": ["Authorization": "Bearer \(token)"]
+      ]
+    )
+    return AVPlayerItem(asset: asset)
   }
 
   /// Starts periodic progress reporting from an AVPlayer.
@@ -127,14 +149,21 @@ public actor PlaybackCoordinator {
   }
 
   private nonisolated func url(for source: PlaybackPlan.Source) -> URL {
+    let raw: URL
     switch source {
     case .directByteRange(let url):
-      return url
+      raw = url
     case .hlsTranscodeOutput(let masterURL, _):
-      return masterURL
+      raw = masterURL
     case .hlsLive(let masterURL, _):
-      return masterURL
+      raw = masterURL
     }
+    // VariantChooser emits relative paths like "/api/v1/stream/.../master.m3u8";
+    // resolve against the kino-server origin so AVPlayer can actually fetch them.
+    if let baseURL, raw.scheme == nil {
+      return URL(string: raw.relativeString, relativeTo: baseURL)?.absoluteURL ?? raw
+    }
+    return raw
   }
 
   private func recordReportedSeconds(_ seconds: Double) {

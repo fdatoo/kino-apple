@@ -22,10 +22,18 @@ public struct RequestsAPI: Sendable {
     self.transport = transport
   }
 
-  /// Creates a request for a TMDB-backed media identity.
-  public func create(kind: DiscoverKind, tmdbID: Int) async throws -> RequestDetail {
+  /// Creates a media request from a free-text query and optional canonical identity.
+  ///
+  /// `query` is the human-readable display target (e.g. `"Mr Robot 2015"`). When
+  /// `canonicalIdentityID` is supplied (e.g. `"tmdb:series:37680"` from a discover
+  /// candidate), the server skips TMDB lookup and creates the request directly in
+  /// the `resolved` state. Otherwise the server parses `query` and searches TMDB
+  /// itself.
+  public func create(query: String, canonicalIdentityID: String? = nil) async throws
+    -> RequestDetail
+  {
     let output = try await transport.makeClient().createRequest(
-      body: .json(.init(target: "tmdb:\(kind.rawValue):\(tmdbID)"))
+      body: .json(.init(canonicalIdentityId: canonicalIdentityID, target: query))
     )
 
     switch output {

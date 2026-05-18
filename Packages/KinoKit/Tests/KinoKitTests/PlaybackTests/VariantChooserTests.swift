@@ -237,7 +237,10 @@ final class VariantChooserTests: XCTestCase {
   }
 
   private static func liveURL(sourceID: UUID?, profile: String) -> URL {
-    let sourcePath = sourceID?.uuidString ?? "unknown"
-    return URL(string: "/api/v1/stream/live/\(sourcePath)/\(profile)/master.m3u8")!
+    // VariantChooser routes the live-fallback case through the unified
+    // `/api/v1/stream/items/{itemID}/master.m3u8` endpoint. sourceID and profile
+    // are ignored for URL construction; profile is still asserted separately on
+    // the `.hlsLive` case associated value.
+    URL(string: "/api/v1/stream/items/\(id(900).uuidString)/master.m3u8")!
   }
 }
