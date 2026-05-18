@@ -100,28 +100,32 @@ public actor ServerDiscovery {
     let connection = NWConnection(to: endpoint, using: .tcp)
     defer { connection.cancel() }
 
-    return try await withCheckedThrowingContinuation { continuation in
-      let resolver = DiscoveryResolution(continuation: continuation)
+    return try await withTaskCancellationHandler {
+      try await withCheckedThrowingContinuation { continuation in
+        let resolver = DiscoveryResolution(continuation: continuation)
 
-      connection.stateUpdateHandler = { state in
-        switch state {
-        case .ready:
-          if let resolved = connection.currentPath?.remoteEndpoint?.hostPortValue {
-            resolver.resume(returning: resolved)
-          } else if let resolved = connection.endpoint.hostPortValue {
-            resolver.resume(returning: resolved)
-          } else {
-            resolver.resume(throwing: KinoError.transport(URLError(.cannotFindHost)))
+        connection.stateUpdateHandler = { state in
+          switch state {
+          case .ready:
+            if let resolved = connection.currentPath?.remoteEndpoint?.hostPortValue {
+              resolver.resume(returning: resolved)
+            } else if let resolved = connection.endpoint.hostPortValue {
+              resolver.resume(returning: resolved)
+            } else {
+              resolver.resume(throwing: KinoError.transport(URLError(.cannotFindHost)))
+            }
+          case .failed:
+            resolver.resume(throwing: KinoError.transport(URLError(.cannotConnectToHost)))
+          case .cancelled:
+            resolver.resume(throwing: KinoError.transport(URLError(.cancelled)))
+          default:
+            break
           }
-        case .failed:
-          resolver.resume(throwing: KinoError.transport(URLError(.cannotConnectToHost)))
-        case .cancelled:
-          resolver.resume(throwing: KinoError.transport(URLError(.cancelled)))
-        default:
-          break
         }
+        connection.start(queue: .global(qos: .utility))
       }
-      connection.start(queue: .global(qos: .utility))
+    } onCancel: {
+      connection.cancel()
     }
   }
 }

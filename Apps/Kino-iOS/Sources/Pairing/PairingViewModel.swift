@@ -53,11 +53,15 @@ final class PairingViewModel {
 
   /// Resolves a discovered server then requests a pairing code.
   func select(_ server: DiscoveredServer) async {
+    logger.info("select tapped: \(server.name, privacy: .public)")
     do {
       let resolved = try await discovery.resolve(server)
+      logger.info(
+        "resolved: \(resolved.host, privacy: .public):\(resolved.port, privacy: .public)"
+      )
       await requestCode(for: resolved)
     } catch {
-      logger.error("resolve failed: \(String(describing: error))")
+      logger.error("resolve failed: \(String(describing: error), privacy: .public)")
       phase = .failed(.malformedResponse)
     }
   }
