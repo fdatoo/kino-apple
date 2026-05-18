@@ -438,6 +438,8 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				INFOPLIST_KEY_UIBackgroundModes = audio;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Kino discovers your local server over Bonjour.";
+				INFOPLIST_KEY_NSBonjourServices = "_kino._tcp";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -477,6 +479,8 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIUserInterfaceStyle = Dark;
 				INFOPLIST_KEY_UIBackgroundModes = audio;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Kino discovers your local server over Bonjour.";
+				INFOPLIST_KEY_NSBonjourServices = "_kino._tcp";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
