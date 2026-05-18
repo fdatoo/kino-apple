@@ -196,6 +196,9 @@ final class PlaybackCoordinatorTests: XCTestCase {
   }
 
   private static func liveURL(sourceID: UUID, profile: String) -> URL {
-    URL(string: "/api/v1/stream/live/\(sourceID.uuidString)/\(profile)/master.m3u8")!
+    // VariantChooser routes the live-fallback case through the unified
+    // `/api/v1/stream/items/{itemID}/master.m3u8` endpoint; sourceID/profile
+    // remain in the signature for call-site stability.
+    URL(string: "/api/v1/stream/items/\(id(900).uuidString)/master.m3u8")!
   }
 }

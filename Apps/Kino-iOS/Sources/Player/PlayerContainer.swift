@@ -15,6 +15,46 @@ struct PlayerContainer: View {
 
   private let logger = Logger(subsystem: "kino.ios", category: "player")
 
+  @State private var statusObserver: NSKeyValueObservation?
+
+  private func observePlayerItemStatus(_ playerItem: AVPlayerItem) {
+    statusObserver = playerItem.observe(\.status, options: [.new, .initial]) { [logger] item, _ in
+      switch item.status {
+      case .readyToPlay:
+        logger.info("playerItem.status: readyToPlay")
+      case .failed:
+        logger.error(
+          "playerItem.status: failed — error=\(String(describing: item.error), privacy: .public)"
+        )
+      case .unknown:
+        logger.info("playerItem.status: unknown")
+      @unknown default:
+        logger.info("playerItem.status: @unknown")
+      }
+    }
+  }
+
+  private func logPlayerItemFailures(_ playerItem: AVPlayerItem) {
+    NotificationCenter.default.addObserver(
+      forName: .AVPlayerItemFailedToPlayToEndTime,
+      object: playerItem,
+      queue: .main
+    ) { [logger] note in
+      let err = note.userInfo?[AVPlayerItemFailedToPlayToEndTimeErrorKey]
+      logger.error("AVPlayer failed to play to end: \(String(describing: err), privacy: .public)")
+    }
+    NotificationCenter.default.addObserver(
+      forName: .AVPlayerItemNewErrorLogEntry,
+      object: playerItem,
+      queue: .main
+    ) { [logger] _ in
+      guard let entry = (playerItem.errorLog()?.events.last) else { return }
+      logger.error(
+        "AVPlayer error: status=\(entry.errorStatusCode), domain=\(entry.errorDomain, privacy: .public), comment=\(entry.errorComment ?? "-", privacy: .public), uri=\(entry.uri ?? "-", privacy: .public)"
+      )
+    }
+  }
+
   var body: some View {
     Group {
       if let player {
@@ -70,12 +110,19 @@ struct PlayerContainer: View {
       reporter: client.playback,
       item: item,
       capabilities: .iOS17Default,
+      baseURL: client.session.baseURL,
       token: { token }
     )
     coordinator = coord
     do {
       let plan = try await coord.prepare()
+      logger.info("playback plan: \(String(describing: plan.source), privacy: .public)")
       let playerItem = coord.makePlayerItem(plan)
+      if let urlAsset = playerItem.asset as? AVURLAsset {
+        logger.info("AVURLAsset URL: \(urlAsset.url.absoluteString, privacy: .public)")
+      }
+      logPlayerItemFailures(playerItem)
+      observePlayerItemStatus(playerItem)
       let p = AVPlayer(playerItem: playerItem)
       player = p
       await coord.startReporting(player: p)

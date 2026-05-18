@@ -22,10 +22,16 @@ public struct RequestsAPI: Sendable {
     self.transport = transport
   }
 
-  /// Creates a request for a TMDB-backed media identity.
-  public func create(kind: DiscoverKind, tmdbID: Int) async throws -> RequestDetail {
+  /// Creates a media request from a free-text query.
+  ///
+  /// The kino-server's `/requests` endpoint parses `target` as a human-readable
+  /// title (optionally with year and TV season/episode locator) and resolves it via
+  /// TMDB search. Pass strings like `"Mr Robot 2015"` or `"Breaking Bad S01E01"`,
+  /// not canonical identity strings such as `"tmdb:series:37680"` — those are the
+  /// server's internal post-resolution form and won't parse as input.
+  public func create(query: String) async throws -> RequestDetail {
     let output = try await transport.makeClient().createRequest(
-      body: .json(.init(target: "tmdb:\(kind.rawValue):\(tmdbID)"))
+      body: .json(.init(target: query))
     )
 
     switch output {

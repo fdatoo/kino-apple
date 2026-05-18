@@ -96,10 +96,10 @@ struct HomeView: View {
     ZStack(alignment: .bottomLeading) {
       KinoAsyncImage(url: backdropURL, isInternal: true, cornerRadius: 0)
         .aspectRatio(contentMode: .fill)
-        .frame(height: 360)
+        .frame(maxWidth: .infinity, maxHeight: 360)
         .clipped()
       LinearGradient(colors: [.clear, .black], startPoint: .top, endPoint: .bottom)
-        .frame(height: 360)
+        .frame(maxWidth: .infinity, maxHeight: 360)
       VStack(alignment: .leading, spacing: 8) {
         Text(eyebrow.uppercased())
           .font(.caption2.weight(.bold))

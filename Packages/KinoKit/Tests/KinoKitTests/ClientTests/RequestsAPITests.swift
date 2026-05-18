@@ -19,14 +19,14 @@ final class RequestsAPITests: XCTestCase {
       .init(status: 201, headers: ["Content-Type": "application/json"], body: requestDetailJSON)
     )
 
-    let detail = try await testClient().requests.create(kind: .movie, tmdbID: 123)
+    let detail = try await testClient().requests.create(query: "Fight Club 1999")
 
     let request = try XCTUnwrap(observed)
     XCTAssertEqual(request.httpMethod, "POST")
     assertAuthorized(request)
     let body = try XCTUnwrap(requestBody(request))
     let object = try JSONSerialization.jsonObject(with: body) as? [String: String]
-    XCTAssertEqual(object?["target"], "tmdb:movie:123")
+    XCTAssertEqual(object?["target"], "Fight Club 1999")
     XCTAssertEqual(detail.request.id, "00000000-0000-0000-0000-000000000501")
   }
 

@@ -47,7 +47,7 @@ final class SearchViewModel {
   /// Requests a TMDB candidate via the server; surfaces server errors into `error`.
   func submitRequest(for candidate: DiscoverCandidate, client: KinoClient) async {
     do {
-      _ = try await client.requests.create(kind: candidate.kind, tmdbID: Int(candidate.tmdbId))
+      _ = try await client.requests.create(query: requestQuery(for: candidate))
       discoverResults.removeAll { $0.tmdbId == candidate.tmdbId }
     } catch let kinoError as KinoError {
       self.error = kinoError
@@ -56,6 +56,16 @@ final class SearchViewModel {
       self.error = .decoding(error)
       logger.error("requests.create decoding failed: \(String(describing: error))")
     }
+  }
+
+  /// Builds the human-readable query string the server's request parser expects.
+  /// Includes year (if available) for disambiguation since the server pipes the
+  /// target into TMDB search.
+  private func requestQuery(for candidate: DiscoverCandidate) -> String {
+    if let year = candidate.year {
+      return "\(candidate.title) \(year)"
+    }
+    return candidate.title
   }
 
   private func scheduleSearch() {

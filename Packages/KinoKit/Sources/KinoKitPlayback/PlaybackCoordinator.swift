@@ -8,6 +8,7 @@ public actor PlaybackCoordinator {
   private let reporterClient: any PlaybackReporting
   private let item: MediaItem
   private let capabilities: ClientCapabilities
+  private let baseURL: URL?
   private let token: @Sendable () -> String?
   private let logger = Logger(subsystem: "kino.kit", category: "playback")
   private var plan: PlaybackPlan?
@@ -18,17 +19,21 @@ public actor PlaybackCoordinator {
 
   /// Creates a playback coordinator for one item and capability set.
   ///
+  /// `baseURL` is the kino-server origin used to resolve relative stream URLs
+  /// produced by `VariantChooser` (which doesn't know about the server origin).
   /// `token` returns the bearer token to attach to AVURLAsset HTTP headers so that
   /// kino-server's authenticated stream endpoints accept the request.
   public init(
     reporter: any PlaybackReporting,
     item: MediaItem,
     capabilities: ClientCapabilities,
+    baseURL: URL? = nil,
     token: @escaping @Sendable () -> String? = { nil }
   ) {
     self.reporterClient = reporter
     self.item = item
     self.capabilities = capabilities
+    self.baseURL = baseURL
     self.token = token
   }
 
@@ -144,14 +149,21 @@ public actor PlaybackCoordinator {
   }
 
   private nonisolated func url(for source: PlaybackPlan.Source) -> URL {
+    let raw: URL
     switch source {
     case .directByteRange(let url):
-      return url
+      raw = url
     case .hlsTranscodeOutput(let masterURL, _):
-      return masterURL
+      raw = masterURL
     case .hlsLive(let masterURL, _):
-      return masterURL
+      raw = masterURL
     }
+    // VariantChooser emits relative paths like "/api/v1/stream/.../master.m3u8";
+    // resolve against the kino-server origin so AVPlayer can actually fetch them.
+    if let baseURL, raw.scheme == nil {
+      return URL(string: raw.relativeString, relativeTo: baseURL)?.absoluteURL ?? raw
+    }
+    return raw
   }
 
   private func recordReportedSeconds(_ seconds: Double) {

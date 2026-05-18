@@ -44,8 +44,11 @@ public enum VariantChooser {
   }
 
   static func liveMasterURL(item: MediaItem, profile: String) -> URL {
-    let sourceID = item.sourceFiles.first?.id.uuidString ?? "unknown"
-    return URL(string: "/api/v1/stream/live/\(sourceID)/\(profile)/master.m3u8")!
+    // kino-server's unified master.m3u8 endpoint serves cached transcodes or falls back to
+    // source-file HLS when no packaged variant exists. The `live` sub-tree requires a
+    // base64url-encoded canonical TranscodeProfile JSON that we don't yet build client-side,
+    // so we route through `/items/{id}/master.m3u8` which the server resolves itself.
+    return URL(string: "/api/v1/stream/items/\(item.id.uuidString)/master.m3u8")!
   }
 
   private static func rank(_ lhs: TranscodeOutput, _ rhs: TranscodeOutput) -> Bool {
